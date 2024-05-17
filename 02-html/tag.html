@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag 종류</title>
+</head>
+<body>
+    <h1>Tag 종류에 대해 배우기</h1>
+    <h2>두번째로 큰 제목</h2>
+    <h3>세번째로 큰 제목</h3>
+    <h4>네번째로 큰 제목</h4>
+    <h5>다섯번째로 큰 제목</h5>
+    <h6>여섯번째로 큰 제목</h6>
+    <!-- h7태그는 존재하지 않는 태그 -->
+    <!-- <h7>제목?</h7> -->
+
+    <p>본문 영역</p>
+    <!-- 줄바꿈 태그 br -->
+    <br>
+    <br>
+    <br>
+    <p>본문 영역</p>
+
+    <h3>오늘의 할일</h3>
+    <!-- ul tag type attribute : disc(default), square, circle, none -->
+    <ul type="circle">
+        <li>HTML 복습</li>
+        <li>운동</li>
+        <li>깃 명령어 연습</li>
+    </ul>
+    
+    <h3>아이스 카페라떼 레시피</h3>
+    <!-- ol tag type attribute : 1(default), a, A, i, I -->
+    <!-- start attr : 시작번호, reversed :역순으로 -->
+    <ol type="1">
+        <li><strong>우유</strong>를 <em>180ml</em> 컵에 넣기</li>
+        <li><b>얼음</b>을 컵에 가득 넣기</li>
+        <li><i>에스프레소</i> 샷 넣기</li>
+        <li><u>완성!</u> <del>맛있게 드세요</del></li>
+    </ol>
+    <!-- 수평줄 태그 hr-->
+    <hr>
+
+    <!-- 목록 태그의 중첩 사용 -->
+    <h3 style="color: coral;">내가 좋아하는 음식</h3>
+    <ul>
+        <li>한식
+            <ul>
+                <li>김치찌개</li>
+                <li>불고기</li>
+            </ul>
+        </li>
+        <li>양식
+            <ul>
+                <li>스테이크</li>
+                <li>파스타</li>
+            </ul>
+        </li>
+        <li>일식
+            <ul>
+                <li>연어초밥</li>
+                <li>가츠동</li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h2>img 태그</h2>
+    <!-- img태그는 인라인 요소 -->
+    <!-- 
+        상대 경로 : 현재 위치를 기준으로하는 파일의 상대적인 경로 
+         - 프로젝트의 위치가 바뀌어도 그대로 사용 가능 (장점)
+         - 목적 파일(이미지)의 위치가 바뀐다면 상대 경로를 수정해야함(단점)
+         ex. ./src/img/img.png, ../../img.png
+    -->
+    <img src="./image/sesac.png" alt="새싹" width="300px">
+    <!-- 
+        절대 경로 : root(맨 처음, 최상단 주소)부터 해당 파일까지의 경로
+        - 내 로컬 환경에서는 어느 곳에서든 접근 가능(장점)
+        - 다른 로컬에서는 절대 경로가 실제로 동일해야만 접근 가능(단점)
+        ex. https://www.naver.com, C:/users/...
+     -->
+     <br>
+     <!-- 인터넷 이미지 주소로 지정 -->
+     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAA4CAMAAABe34GAAAAAZlBMVEUAAAD////u7u6Dg4OTk5NkZGSsrKzg4OD19fWLi4vZ2dkVFRUyMjL6+vppaWnm5uZXV1d5eXnS0tIqKipeXl47Ozu2trafn5/BwcEiIiIaGhrLy8uZmZlSUlKlpaVvb28LCwtFRUUINVvnAAABgUlEQVRIiZXW63qCMAwG4EDlaDkqiEPB3f9NjtJGixz6Lf/o3ofFpG0g7zB60dysRzqy3Z2ITqAOSEUI6UzOmGpINxovwK5ODK4QXRhMEaLzrVfv6Zg2st7VrcEFpPVvPH/hPT2nnayWd7T4KYd4vWzrLO3rr/+dtkPYRWsdP0ynRcpLXcCVqdKl5tapkOGURGSvEAXxRxdnWsb38xQp63T9t42otfYhrFql9AXDctYnDAdz3rEbqrjqmmCvvpt6bxRrI3R7KMLzmHQI6d7oCtK8q0oEP1lLRAvWL0TzKUKs9W6o3Dnrxm2JLqyvUCr+v+ptBgQNkDbtoR7TuoYEbm+9U8iDmkl85hM31NEqXaOaAp/Q5quQk37AeiD88qGpft5nIrkin++qwg3niPStOUI4MHcs1k+f72/kmrh9ZsPTiaU1Sdy5FPbccfW/XUwp7/hUiOVMW176cqxG+3jzl4Q1Xbkwl1BP4Szkrf/+bLNnsZ80r19hf0fVSSnLk/9+/gNKNAxPI/SsfAAAAABJRU5ErkJggg==" alt="애플로고">
+
+     <hr>
+     <h2>a 태그</h2>
+     <!-- 
+        a 태그의 target attribute : 링크가 열릴 위치 지정 
+        - _self(default) : 현재 탭에서 열기
+        - _blank : 새 탭으로 열기
+     -->
+     <a href="https://www.naver.com/">네이버 바로가기</a>
+     <a href="https://www.naver.com/" target="_blank">네이버 바로가기</a>
+     <a href="https://www.naver.com/" target="_blank" title="마우스를 올리면 나타나는 제목">네이버 바로가기</a>
+
+     <!-- href 속성은 인터넷 상 주소 뿐 아니라 상대 경로 주소도 가능 -->
+     <a href="./html-start.html" target="_blank">HTML 시작하기 공부내용 보기</a>
+</body>
+</html>
