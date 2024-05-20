@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 참조 방식</title>
+    <!-- css 참조방식 3. 링크 방식 -->
+    <link rel="stylesheet" href="./index.css">
+    <!-- css 참조방식 2. 내장 방식 -->
+    <style>
+        ul {
+            background-color: aqua;
+            list-style: none;
+        }
+        /* 다른 태그에 같은 스타일 적용 */
+        h1, h2 {
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- css 참조방식 1. 인라인 방식 -->
+    <h1 style="color: blue;">CSS 사용법 익히기</h1>
+    <h2 style="background-color: green;">Hello World</h2>
+    <!-- css 참조방식 2. 내장 방식 -->
+    <ul>
+        <li>원</li>
+        <li>투</li>
+        <li>쓰리</li>
+    </ul>
+    <!-- 
+        1. 인라인 : 태그에 직접 작성
+        2. 내장 : style 태그 사용 
+        3. 링크 : link 연결
+     -->
+</body>
+</html>
