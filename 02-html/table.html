@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tag</title>
+</head>
+<body>
+    <h1>테이블 태그 배우기</h1>
+    <!-- table 태그 : 표를 만들때 사용하는 태그
+        행(row)을 기준으로 만들어진다. -->
+    <table width="150" height="150" border="1" bgcolor="skyblue">
+        <caption>My First Table</caption>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <br>
+    <!-- cellspacing, cellpadding
+         cellspacing : border 사이의 간격(여백)
+         cellpadding : cell(td요소)의 내부 간격(여백)
+         -> table 태그에서 설정
+    -->
+    <!-- align : 정렬 -->
+    <table border="1" cellpadding="15" cellspacing="10" align="center">
+        <caption>메뉴판</caption>
+        <thead>
+            <tr>
+                <!-- th태그 : table의 제목 칸을 의미(bold 체) -->
+                <th>메뉴</th>
+                <th>가격</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>국물떡볶이</td>
+                <td>5,000원</td>
+                <td>2인 이상 주문 가능</td>
+            </tr>
+            <tr>
+                <td>참치김밥</td>
+                <td>4,000원</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>치즈김밥</td>
+                <td>4,000원</td>
+                <td>치즈 추가 500원</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <!-- rowspan, colspan
+         rowspan : 해당 칸이 점유하는 행의 수 지정(행 병합)
+         colspan : 해당 칸이 점유하는 열의 수 지정(열 병합)
+    -->
+    <table border="1" cellspacing="0">
+        <caption>NEW 메뉴판</caption>
+        <thead>
+            <tr>
+                <th>메뉴</th>
+                <th>가격</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>국물떡볶이</td>
+                <td>5,000원</td>
+                <td>2인 이상 주문 가능</td>
+            </tr>
+            <tr>
+                <td>참치김밥</td>
+                <td rowspan="2">4,000원</td>
+                <!-- rowspan="2" -> 2개의 row 병합 -->
+                <td>x</td>
+            </tr>
+            <tr>
+                <td>치즈김밥</td>
+                <!-- <td>4,000원</td> -->
+                <!-- 병합된 칸을 주석처리 하지 않거나 똑같이 쓰면 표가 깨진다! -->
+                <td>치즈 추가 500원</td>
+            </tr>
+            <tr>
+                <td colspan="3">순대 (품절)</td>
+                <!-- colspan="3" -> 3개의 column 병합 -->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
