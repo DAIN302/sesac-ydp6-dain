@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Tag</title>
+</head>
+<body>
+    <!-- before : div 로만 페이지 구조 설계 -->
+    <!-- div 로만 구성되어 있으면 나중에 유지보수하기 힘들다! -->
+    <div style="background-color: pink; height: 50px;">Header</div>
+    <div style="background-color: skyblue; height: 1000px; display: flex;">
+        <!-- Main -->
+        <div style="background-color: orange; width: 80%;">section
+            <div style="height: 100px; background-color: lime;">Article1</div>
+            <div style="height: 100px; background-color: darkgray;">Article2</div>
+            <div style="height: 100px; background-color: lime;">Articl3</div>
+            <div style="height: 100px; background-color: darkgray;">Article4</div>
+        </div>
+        <div style="background-color: royalblue; width: 20%;">aside</div>
+    </div>
+    <div style="background-color: palegreen; height: 80px;">Footer</div>
+    <!-- after : semantic tog 로 페이지 구조 설계 -->
+    <!-- div 태그와 역할상의 차이는 없으나, 의미가 있는 태그다. 컨텐츠의 구분을 의의로 둔다. -->
+    <header style="background-color: pink; height: 50px;">Header</header>
+    <main style="background-color: skyblue; height: 1000px; display: flex;">
+        <!-- Main -->
+        <section style="background-color: orange; width: 80%;">section
+            <article style="height: 100px; background-color: lime;">Article1</article>
+            <article style="height: 100px; background-color: darkgray;">Article2</article>
+            <article style="height: 100px; background-color: lime;">Articl3</article>
+            <article style="height: 100px; background-color: darkgray;">Article4</article>
+        </section>
+        <aside style="background-color: royalblue; width: 20%;">aside</aside>
+    </main>
+    <footer style="background-color: palegreen; height: 80px;">Footer</footer>
+</body>
+</html>
