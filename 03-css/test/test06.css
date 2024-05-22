@@ -1,0 +1,23 @@
+.box::before {
+    content: '택시';
+}
+
+.box::after {
+    content: '빨리';
+}
+
+[disabled] {
+    background-color: red;
+}
+
+[placeholder="이름"] {
+    background-color: orange;
+}
+
+/* [value] {
+    background-color: blue;
+} */
+
+input:not([placeholder]) {
+    background-color: blue;
+}

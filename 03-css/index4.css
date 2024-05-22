@@ -71,3 +71,25 @@ input:focus {
 .zoo > :nth-child(even) {
     font-size: 30px;
 }
+
+/* 가상 요소 : before, after */
+/* 
+   HTML 요소의 특정 부분을 스타일링하기 위해 사용,
+   실제 HTML문서에 존재하지 않는 부분이지막 css을 통해 스타일 적용 가능 
+   
+   가상클래스 : 와 가상요소 :: 의 차이?
+   CSS 사양이 발전하면서 가상클래스와 가상요소 명확하게 구분할 필요성 생ㄱㅁ,
+   가상클래스 - 문서의 기존 요소 상태를 나타냄
+   가상요소 - 문서의 특정 부분을 생성하여 스타일링
+   구분하기 위해 ::로 표기하는 새로운 표기법 도입
+*/
+
+.box::before {
+    content: '택시';
+    color: red;
+}
+
+.box::after {
+    content: '빨리';
+    color: blue;
+}
