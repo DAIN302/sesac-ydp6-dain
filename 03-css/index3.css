@@ -1,0 +1,48 @@
+/* 하위 후손 선택자  : 공백(띄어쓰기) */
+body section {
+    border: 1px solid blue;
+}
+
+body section h2 {
+    border: 1px solid green;
+
+}
+
+/* 자식 선택자 : 부등호 >  */
+.first > h2 {
+    color : #fff;
+    background-color: navy;
+}
+
+.second > h2 {
+    color : navy;
+    background-color: #fff;
+}
+
+/* 하위 선택자와 자식 선택자 차이 :
+   하위 선택자는 모든 하위 요소들을 선택한다.
+   자식 선택자는 바로 하위의 직계 자식만 선택한다. */
+
+/* 인접 형제 선택자 : + */
+/* 선택한 요소의 다음 형제(인접한 형제)를 선택 */
+/* 주의할 점 : lion 이라는 아이디를 갖는 요소 바로 뒤에 li 태그가 있어야함! 중간에 다른 태그가 끼어들면 인지하지 못한다. */
+#lion + li {
+    background-color: aqua;
+}
+
+/* 일반 형제 선택자 : ~ */
+/* 인접해있지 않아도 선택한 요소 뒤의 모든 형제를 선택함 */
+#lion ~ li {
+    color : coral;
+}
+
+/* 
+    CSS 색상
+    1) 색상키워드 사용 : red, blue, white, black 등
+    2) 16진수 코드 : 0 ~ 9, a ~ f 16개의 기호의 조합으로 6자리로 표현
+       ex)#efefef, #ffffff, #000000
+       - #ffffff : red(ff), green(ff), blue(ff)
+       - #000000 : red(00), green(00), blue(00)
+    3) rgb(0~255, 0~255, 0~255) 로 표현
+       ex) rgb(255,255,255), rgb(0,0,0), rgb(141, 214, 36)   
+*/
