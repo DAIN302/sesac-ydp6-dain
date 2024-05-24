@@ -1,0 +1,97 @@
+.box-transition {
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+    background-color: #000;
+    color: #fff;
+    transition: 1s .5s;
+}
+
+.box-transition:hover {
+    width: 300px;
+    height: 300px;
+}
+
+.img-container {
+    background-color: lightgrey;
+    position: relative;
+    width: 100vw;
+    height: 800px;
+    margin-bottom: 100px;
+}
+
+.img-container div {
+    position: absolute;
+    top: 40%;
+    left: 200px;
+}
+
+.img-container .bono img{
+    z-index: 3;
+}
+
+.img-container .poro {
+    top: 35%;
+    left: 30%;
+}
+
+.img-container .poro img {
+    z-index: 2;
+}
+
+
+.img-container .racoon {
+    top: 30%;
+    left: 40%;
+}
+
+.img-container .racoon img {
+    z-index: 1;
+}
+
+
+.img-container img {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    transform: skewY(30deg);
+    transition: transform .6s;
+}
+
+.img-container div img:hover {
+    transform: skewY(0);
+    z-index: 5;
+
+}
+
+.container div {
+    border : 1px solid #000;
+    background-color: skyblue;
+    width: 100px;
+    height: 100px;
+    /* position: relative; */
+    transition: all .8s;
+}
+
+.container div:first-child:hover {
+    transform-origin: left;
+    transform: scaleX(2);
+}
+
+.container div:nth-child(2):hover {
+    transform: skewX(-30deg);
+    transform-origin: bottom;
+}
+
+.container div:nth-child(3):hover {
+    transform: translate(300px);
+    border-radius: 50%;
+    background-color: red;
+}
+
+.container div:last-child:hover {
+    background-color: yellow;
+    transform: rotateY(360deg) scale(2);
+    transform-origin: top;
+}
+

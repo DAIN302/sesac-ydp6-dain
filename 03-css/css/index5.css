@@ -82,6 +82,47 @@ div {
     border-radius: 50%;
 }
 
+.ma {
+
+    width: 500px;
+    height: 200px;
+    /* 여백 */
+    /* padding : top, right, bottom, left  */
+    /* margin : top, right, bottom, left  */
+
+    /* 방향별 속성 단축형식 */
+    /* 
+        margin : 사이즈 -> 상, 우, 하, 좌 모두 적용
+        margin : 사이즈 사이즈 -> 상하, 좌우로 적용
+        margin : 사이즈 사이즈 사이즈 -> 상 좌우 하로 적용
+        margin : 사이즈 사이즈 사이즈 사이즈 -> 상, 우, 하, 좌 순으로 적용(시계방향)
+        padding 도 같은 원리로 적용된다!
+    */
+    margin: 50px 20px 40px 30px;
+    padding: 20px 35px;
+}
+
+/* 배경이미지 속성 */
+.bgI {
+    height: 500px;
+    /* 배경 이미지 없음  */
+    /* background-image: none; */
+    /* 배경 이미지 경로 */
+    background-image: url('./img/bono.webp');
+    /* 배경 이미지 반복 : repeat 가 디폴트 값 */
+    /* background-repeat: repeat ; */
+    /* background-repeat: repeat-x; */
+    background-repeat: no-repeat;
+    /* 배경 이미지 위치 : 포지션 키워드 또는 픽셀 단위로 지정 가능 */
+    background-position: center;
+    /* 배경 이미지 크기 : auto(이미지 실제 크기), contain, cover, 사아즈 단위로 지정 등 */
+    /* cover : 비율 유지, 요소의 더 넓은 너비에 맞춤 */
+    /* contain : 비율 유지, 요소의 더 짧은 너비에 맞춤 */
+    background-size: contain;
+    /* 배경 이미지 스크롤 */
+    /* background-attachment : scroll, fixed, local */
+}
+
 
 
 

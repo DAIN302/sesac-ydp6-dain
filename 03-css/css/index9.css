@@ -1,0 +1,50 @@
+.bono {
+    width: 700px;
+    height: 400px;
+    background-color: pink;
+    position: absolute;
+    left: 200px;
+}
+
+
+.bono img {
+    /* 크기 단위로 % 사용 : 부모 요소의 n% 차지*/
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.bono img:hover {
+    /* 1. skew : 원하는 각도만큼 객체를 기울임 
+       x, y축으로 나누어 속성 부여 skewX(xdeg), skewY(ydeg)
+       x,y 동시에 쓰려면 skew(xdeg, ydeg) 
+    */
+    /* transform: skew(50deg, 30deg); */
+
+    /* 2. scale : 크기 조절(확대, 축소)
+       1보다 크면 확대, 0.n -> 0.n만큼 확대 따라서 축소 
+    */
+    /* transform: scale(0.5); */
+    /* transform: scaleY(2) */
+
+    /* 3. rotate : 주어진 각도만큼 회전
+       X축 또는 Y축 기준으로 회전 rotateX(xdeg) rotateY(ydeg)
+    */
+    /* transform: rotateX(180deg); */
+    /* transform: rotateY(45deg); */
+    /* transform: rotate(180deg); */
+
+    /* 4. translate : 이동
+       X축 또는 Y축 기준으로 이동 translateX(npx) translateY(npx)
+       translate(npx) X축, Y축으로 이동 
+    */
+    /* transform: translateX(120px); */
+    /* transform: translateY(120px); */
+    transform: translate(120px, 50px);
+
+    /* transition 속성
+       - css 요소의 속성값이 변화할 때 일정 시간동안 부드럽게 변화가 일어나도록 설정(부드러운 변화, 자연스러운 변화)
+       - transform 속성과 자주 쓰임 
+    */
+    /* transition: transform .5s; -> .5초 동안 부드러운 변화 */
+}
