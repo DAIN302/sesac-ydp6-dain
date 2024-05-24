@@ -1,0 +1,34 @@
+.d-inline1 {
+    display: inline;
+    background-color: lightblue;
+    width: 100px; 
+    height: 100px;
+    margin-bottom: 50px; /* 속성 적용 안됨 */
+}
+.d-inline2 {
+    display: inline;
+    background-color: lightgreen;
+}
+
+.d-block1 {
+    display: block;
+    background-color: lightpink;
+    height: 100px;
+    margin-bottom: 100px;
+}
+
+.d-block2 {
+    display: block;
+    background-color: lightyellow;
+}
+
+.d-inline-block1 {
+    display: inline-block;
+    height: 100px;
+    background-color: lightskyblue;
+    margin-right: 50px;
+}
+.d-inline-block2 {
+    display: inline-block;
+    background-color: lightslategrey;
+}

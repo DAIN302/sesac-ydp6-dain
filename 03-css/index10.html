@@ -7,6 +7,36 @@
     <link rel="stylesheet" href="./css/index10.css">
 </head>
 <body>
-    
+    <h1>CSS display 속성에 대해 알아보기</h1>
+    <ul>
+        <li>display 속성은 화면에 어떻게 보여질지 결정하는 속성</li>
+        <li>html 태그는 기본적으로 block 과 inline 요소 둘 중 하나를 기본값으로 가짐</li>
+    </ul>
+    <hr>
+    <h2>inline</h2>
+    <ol>
+        <li>span, a, img 태그와 같이 내용물(content) 만큼만 공간 할당</li>
+        <li>content만큼 공간 핳당하기 떄문에 width, height, padding, margin 사용 불가</li>
+        <li>줄바꿈 없이 바로 옆에 배치</li>
+    </ol>
+    <div class="d-inline1">div-inline1 display 속성이 inline</div>
+    <div class="d-inline2">div-inline2</div>
+    <hr>
+    <h2>block</h2>
+    <ol>
+        <li>div, p, ul, ol 태그와 같이 한 줄 다 차지</li>
+        <li>width, height, padding, margin 사용 가능</li>
+    </ol>
+    <div class="d-block1">div-block1 display 속성이 block</div>
+    <div class="d-block2">div-block2</div>
+    <hr>
+    <h2>inline-block</h2>
+    <ol>
+        <li>block 요소처럼 크기 지정을 하되(width, height, padding, margin 사용 가능)</li>
+        <li>inline 요소처럼 다른 내용들과 같은 줄을 공유하고 싶은 경우</li>
+        <li>block요소와 inline 요소의 장점을 가짐</li>
+    </ol>
+    <div class="d-inline-block1">div-inline-block1 display 속성이 inline-block</div>
+    <div class="d-inline-block2">div-inline-block2</div>
 </body>
 </html>
