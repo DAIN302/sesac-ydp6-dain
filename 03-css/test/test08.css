@@ -1,0 +1,31 @@
+.border {
+    display: flex;
+}
+
+.border > div {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.border > div:first-child {
+    border: 1px solid black;
+    border-width: 1px 5px 7px 10px;
+}
+
+.border > div:nth-child(2) {
+    border: 5px solid black;
+    border-style: solid dashed dotted double;
+}
+
+.border > div:nth-child(3) {
+    border: 7px solid black;
+    border-color: pink yellow green lightblue;
+}
+
+.border > div:last-child {
+    border-top: 1px solid blue;
+    border-right: 3px dotted red;
+    border-bottom: 5px double orange;
+    border-left: 10px dashed green;
+}
