@@ -1,3 +1,117 @@
-div {
-    clip-path: ellipse(207px 134px at 148% 78%);
+.container {
+    position: relative;
+    width: 600px;
+    height: 300px;
+}
+
+.container > div {
+    position: absolute;
+}
+
+.head {
+    position: absolute;
+    background-color: lightcoral;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+}
+
+.upper {
+    width: 200px;
+    height: 200px;
+    bottom: 150px;
+    left: 0;
+    animation: upperAni 2s ease-in-out infinite alternate;
+}
+
+.body {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    top: 75%;
+    left: calc(55% - 50px);
+    background-color: lightcoral;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 10px;
+    animation: bodyAni 2s ease-in-out infinite alternate;
+}
+
+.feet {
+    width: 50px;
+    height: 100px;
+    left: 60px;
+    bottom: 0;
+}
+
+.foot {
+    position: absolute;
+    width: 25px;
+    height: 10px;
+    background-color: lightcoral;
+    bottom: 10px;
+    border-top-right-radius: 100%;
+    border-top-left-radius: 10px;
+}
+
+.foot1 {
+    animation: footAni1 3s linear infinite;
+}
+
+.foot2 {
+    transform: translate3d(-5px, 0, 0);
+    animation: footAni2 3s linear infinite;
+}
+
+@keyframes upperAni {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes bodyAni {
+    from {
+        transform: skew(0);
+    }
+    to {
+        transform: skewX(-3deg);
+    }
+}
+
+@keyframes footAni1 {
+    0% {
+        transform: translate3d(35px, 0, 0);
+    }
+    25% {
+        transform: translate3d(15px, 0, 0);
+    }
+    50% {
+        transform: translate3d(-5px, 0, 0);
+    }
+    75% {
+        transform: translate3d(15px, -10px, 0);
+    }
+    100% {
+        transform: translate3d(35px, 0, 0);
+    }
+    
+}
+@keyframes footAni2 {
+    0% {
+        transform: translate3d(-5px, 0, 0);
+    }
+    25% {
+        transform: translate3d(15px, -10px, 0);
+    }
+    50% {
+        transform: translate3d(35px, 0, 0);
+    }
+    100% {
+        transform: translate3d(-5px, 0, 0);
+    }
 }
