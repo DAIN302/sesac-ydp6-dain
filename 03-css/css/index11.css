@@ -105,3 +105,35 @@
     background-color: lightslategray;
     font-size: 30px;
 }
+
+
+.box {
+    width: 500px;
+    height: 500px;
+    background-color: lightblue;
+}
+
+.box-item {
+    width: 250px;
+    height: 250px;
+    background-color: lightpink;
+}
+
+.box1 {
+    position: relative;
+}
+
+.box1 > .box-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

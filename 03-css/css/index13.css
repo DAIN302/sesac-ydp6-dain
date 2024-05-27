@@ -1,0 +1,110 @@
+/* 
+    animation-name : @keyframes 애니메이션 이름 지정
+    - 시작 : from or 0 %
+    - 중간 : 0 ~ 100%
+    - 끝 : to or 100%
+
+    animation-duration : 애니메이션이 한 번 재생되는데 걸리는 시간 지정(단위 : s)
+
+    animation-delay : 애니메이션이 시작되기 전에 기다리는 시간 지정(단위 : s)
+
+    animation-iteration-count : 애니메이션 반복 획수(default : 1, infinite : 무한 반복)
+
+    animation-timing-function : 애니메이션 속도 변화 지정(가속도 설정)(linear, ease, ease-in-out 등..)
+
+    animation-direction : 애니메이션의 방향 지정
+    - normal, reverse, alternative(반복될때마다 방향 변경 from->to 다음회차 to->from)
+*/
+
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    position: relative;
+
+    animation-name: boxbox;
+    animation-duration: 2s;
+    /* animation-delay: .5s; */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
+
+/* boxbox : 애니메이션의 이름 (개발자 마음애도 짓기) */
+@keyframes boxbox {
+    0% {
+        border-radius: 50%;
+        left: 0;
+    }
+
+    50% {
+        left: 200px;
+        border-radius: 25%;
+    }
+
+    100% {
+        border-radius: 0;
+        left: 400px;
+    }
+}
+
+
+.bounce-ball1 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: black;    
+    left: 100px;
+    top: 0;
+    /* 애니메이션 단축 프로퍼티 */
+    animation: bounce1 1s ease-out infinite alternate;
+}
+
+@keyframes bounce1 {
+    to {
+        top: 50px;
+    }
+    from {
+        top: 300px;
+    }
+
+}
+
+.bounce-ball2 {
+    width: 50px;
+    height: 50px;
+    background-color: lightgreen;
+    border-radius: 50%;
+    position: absolute;
+
+    animation: bounce2 2s infinite;
+}
+
+@keyframes bounce2 {
+    from, to {
+        bottom: 0px;
+        animation-timing-function: ease-out;
+        /* 0px  에서 정상속도로 시작 -> 속도 줄이면서 300px 됨 */
+    }
+    
+    50% {
+        bottom: 300px;
+        animation-timing-function: ease-in;
+        /* 300px에서 천천히 시작되어 -> 0px로 가면서 정상속도로 끝 */
+    }
+}
+
+/* 
+    tip)
+    * from 에서 to 로의 애니메이션(정방향 애니메이션)
+    - from : 애니메이션의 시작상태
+    - to : 애니메이션의 종료상태
+    애니메이션은 from 상태에서 시작하여 to에서 종료
+
+    * to 에서 from 로의 애니메이션(정방향 애니메이션)
+    - to : 애니메이션의 시작상태
+    - from : 애니메이션의 종료상태
+    애니메이션은 to 상태에서 시작하여 from 상태로 종료
+*/
