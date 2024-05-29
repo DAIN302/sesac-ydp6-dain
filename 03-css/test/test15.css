@@ -44,10 +44,11 @@
   
   /* header2 */
   .header2 {
-    line-height: 60px;
+    /* line-height: 60px; */
   }
 
   .header2 > .menus {
+    height: 100%;
     align-items: center;
     justify-content: space-between;
   }
