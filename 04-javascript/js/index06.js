@@ -87,3 +87,42 @@ console.log(food("마라탕탕후루후루"));
 const pizza = "피자는 역시 하와이안 피자"
 console.log(food(pizza))
 // 매개변수는 어떤 데이터 타입이든 상관 없음
+
+// 매개변수 두개
+function music(name, title) {
+    return `${name} - ${title}`
+}
+
+console.log(music('뉴진스','버블검'))
+console.log(music('데이식스','예뻤어'))
+
+function music2(name, title) {
+    console.log(`${name} - ${title}`)
+}
+
+music2(`에스파`,`슈퍼노바`)
+
+// #3. 화살표 함수(arrow function)
+// 함수 표현식의 축약형, 간결하게 정의
+// 단일 표현식의 경우에는 중괄호와 return 키워드 생략 가능
+// 코드가 길어진다면(여러줄) 중괄호와 return 키워드 명시
+
+// 축약형
+const music3 = (name, title) => `${name} - ${title}`
+const music4 = (name, title) => console.log(`${name} - ${title}`)
+
+console.log(music3('아이유', 'love wins all'))
+music4('아이브','해야')
+
+
+// 일반형
+const triangle = (base, height) => {
+    const area =(base * height) / 2;
+    return area;
+}
+
+console.log(triangle(4,6))
+
+// 호이스팅 -> 함수, 변수
+// JS에서 변수 및 함수 선언이 해당 범위의 맨 위로 끌어올려지는 현상
+// "함수 선언문"이 호이스팅, "함수 표현식"은 호이스팅의 대상이 될 수 없음 -> 변수에 함수가 할당되기 때문에 그 이후에만 호출 가능
