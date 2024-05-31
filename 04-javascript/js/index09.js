@@ -70,4 +70,40 @@ console.log(arr);
 console.log(arr[6]);
 
 // #2 배열 내장 메서드 사용하는 방법
+// push() : 맨 끝 요소 추가
+arr.push(6);
+console.log(arr);
+arr.push(10);
+console.log(arr);
+// pop() : 맨 끝 요소 제거
+arr.pop()
+console.log(arr);
+arr.pop()
+console.log(arr);
+// unshift() : 맨 앞에 요소 추가
+arr2.unshift("snake")
+console.log(arr2);
+// shift() : 맨 앞에 요소 제거
+arr2.shift()
+console.log(arr2);
 
+// 배열.length -> 배열 길이 반환
+
+// includes(요소) : 요소가 있으면 참, 없으면 거짓 반환
+console.log(arr2.includes("cat")); // true
+console.log(arr2.includes("tiger")); // false
+
+// reverse() 순서를 역순으로 변경
+// console.log(arr.reverse());  // 원본 배열을 변경됨
+// console.log(arr);
+
+// join() join 안의 문자열 기준으로 병합 // 배열내의 요소를 문자열로 반환해줌
+console.log(arr2);
+console.log(arr2.join(''));
+console.log(arr2.join('-'));
+
+// 메서드 체이닝(method chaining)
+// 여러 메서드를 연결해서 사용 가능
+console.log('hello'.split(''));
+console.log('hello'.split('').reverse());
+console.log('hello'.split('').reverse().join(''));
