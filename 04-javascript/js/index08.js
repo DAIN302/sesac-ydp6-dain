@@ -106,14 +106,37 @@ for (let i = 1; i <= 5; i++) {
 
 
 
-
-
-
 // 배수 찾기
-let num = 10;
+let num = 10000;
 for(let i =0; i <= num; i++){
-    
+    if(i%13===0 && i%2===1){
+//        console.log(i)
+    }
 }
+
+// 2또는 5의 배수 총합 구하기
+let sumNumber =0;
+for(let i =0; i <=100; i++) {
+    if(i%2===0||i%5===0){
+        sumNumber += i
+    }
+}
+
+//console.log(sumNumber)
+
+// 입력받은 수까지 13의 배수이면서 홀수인 숫자 찾기
+// let num2 = Number(prompt("숫자를 입력해주세요"))
+// for(let i =0; i <=num2;i++){
+//     if(i%13===0 && i%2===1){
+//         console.log(i)
+//     }
+// }
+
+
+
+
+
+
 
 
 
