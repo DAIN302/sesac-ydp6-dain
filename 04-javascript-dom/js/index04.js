@@ -93,6 +93,49 @@ console.log(tiger.nextElementSibling); // 다음 형제 요소
 
 
 
+// 새로운 요소 생성
+const p = document.createElement("p") // js로 p태그 생성
+console.log(p); 
+p.innerText = "새로 추가된 p"
+p.style.fontWeight = 700;
+p.style.backgroundColor = "pink";
 
+// 새로 만든 요소 추가
+// x.append(y) : x요소의 맨마지막 자식으로 y요소 추가
+// x.appendChild(y) : 
+const container = document.querySelector(".container")
+div1.appendChild(p)
+
+const p2 = document.createElement("p");
+const p3 = document.createElement("p");
+
+p2.innerHTML = 'p2'
+p3.innerHTML = 'p3'
+
+p2.classList.add("p-2");
+p3.classList.add("p-3");
+
+container.append(p2, p3)
+
+// x.prepend(y) : x요소의 맨처음 자식으로 y요소 추가
+const li1 = document.createElement("li")
+li1.innerText ="캉가"
+friends.prepend(li1)
+
+const li0 = document.createElement("li")
+li0.innerHTML = `<b>친구들을 소개합니다.</b>`
+friends.prepend(li0)
+
+// 요소 삭제
+// x.remove() : x요소 자체를 삭제
+// x.removeChild(y) : x의 자식요소인 y가 삭제
+const firstLi = document.querySelector('li')
+console.log(firstLi);
+
+const ul = firstLi.parentNode;
+console.log(ul);
+
+// ul.removeChild(firstLi) // 특정 자식요소 삭제
+// firstLi.remove() //요소 자체를 삭제
 
 
