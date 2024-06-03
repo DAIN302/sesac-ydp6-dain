@@ -29,6 +29,8 @@
       const value2 = document.querySelector("#value2")
       const operator = document.querySelector("#operator")
       const resultInput = document.querySelector("#result")  
+      const operations = ["+", "-", "*", "/"]
+
       // [계산] 버튼 클릭시 cal() 함수가 실행되도록 인라인 방식으로 미리 설정해 두었습니다.
       function cal() {
         let operatorValue = operator.value;
@@ -37,7 +39,7 @@
           alert("값을 입력해주세요")
         } 
         // 사칙연산자 확인
-        else if(operatorValue!="+"&&operatorValue!="-"&&operatorValue!="*"&&operatorValue!="/") {
+        else if(!operations.includes(operatorValue)) {
           alert("사칙연산 중 하나를 입력해주세요")
         }
 
@@ -46,13 +48,13 @@
         
         let result;
         switch(operatorValue) {
-          case "+" : result =  firstValue + secondValue;
+          case operations[0] : result =  firstValue + secondValue;
           break;
-          case "-" : result = firstValue - secondValue;
+          case operations[1] : result = firstValue - secondValue;
           break;
-          case "/" : result = firstValue / secondValue;
+          case operations[2] : result = firstValue * secondValue;
           break;
-          case "*" : result = firstValue * secondValue;
+          case operations[3] : result = firstValue / secondValue;
           break;
           default : result= "유효하지 않은 값입니다.";
         }
