@@ -71,5 +71,8 @@ console.log(Math.floor(Math.random() * 11));
 // 실습
 // 1 ~ 100 사이의 난수
 console.log(Math.ceil(Math.random() * 100));
+console.log(Math.floor(Math.random() * 100) + 1);
 // 20 ~ 22 사이의 난수
 console.log(Math.floor(Math.random() * 3) + 20)
+
+console.log((Math.ceil(0.00000001)));
