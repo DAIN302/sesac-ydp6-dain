@@ -23,7 +23,7 @@ console.log(jan_02_1970); // Fri Jan 02 1970 09:00:00 GMT+0900 (한국 표준시
 // new Date(date_string)
 let date = new Date('2024-06-03')
 console.log(date); // Mon Jun 03 2024 09:00:00 GMT+0900 (한국 표준시) 
-let date2 = new Date('2024', '06', '03') // Month 는 0을 1월부터 계산
+let date2 = new Date(2024, 5, 4) // Month 는 0을 1월부터 계산
 console.log(date2); // Wed Jul 03 2024 00:00:00 GMT+0900 (한국 표준시)
 
 // 관련 메서드 
