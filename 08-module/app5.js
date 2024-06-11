@@ -23,3 +23,10 @@ fs.readFile('./input.txt', function(err, data) {
 const data = fs.readFileSync('./input.txt', 'utf-8')
 console.log('readFileSync',data);
 console.log('file read complete');
+
+// readfile 이 더 먼저 코드가 적혔지만 readFileSync 가 먼저 호출됨
+// 동기적으로 파일 읽어들이기 위해서는 readFileSync() 사용
+// 비동기적으로 읽을때는 readFile() 사용
+
+// readFileSync() 는 일반적인 함수처럼 반환값을 반환'
+// readFile()은 반환값이 없고, 실행이 끝났을 때 콜백함수에 반환값을 인자로 받아서 실행
