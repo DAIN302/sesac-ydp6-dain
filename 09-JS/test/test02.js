@@ -17,14 +17,15 @@ class Rectangle extends Shape {
     constructor(width, height) {
         super(width, height)
     }
-    getDiagonal(){
+    // 대각선 길이 구하기
+    getDiagonal(){ 
         return Math.sqrt(this.width**2 + this.height**2)
     }
 }
 
 let rec2 = new Rectangle(3,4)
-console.log(rec2.getArea());
-console.log(rec2.getDiagonal());
+console.log('직사각형 넓이',rec2.getArea());
+console.log('직사각형 대각선 길이',rec2.getDiagonal());
 
 
 // Triangle
@@ -32,26 +33,28 @@ class Triangle extends Shape {
     constructor(width, height){
         super(width, height)
     }
+    // 삼각형 넓이
     getArea(){
         return (this.width * this.height) / 2
     }
 }
 
 let tri = new Triangle(3,4)
-console.log(tri.getArea());
+console.log('삼각형 넓이',tri.getArea());
 
 // Circle
 class Circle extends Shape {
-    constructor(width, height, radius){
-        super(width, height)
-        this.radius = Math.PI
+    constructor(width){
+        super(width)
+        this.radius = width
     }
+    // 원 넓이
     getArea(){
-        return this.width*this.height*this.radius
+        return this.radius**2*Math.PI
     }
 }
 
-let circle = new Circle(3,4)
-
+let circle = new Circle(4)
+console.log('원의 넓이',circle.getArea());
 
 
