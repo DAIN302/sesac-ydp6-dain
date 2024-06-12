@@ -5,7 +5,7 @@ class Shape {
         this.height = height
     }
     getArea(){
-        return `넓이는 ${this.width * this.height} 입니다`
+        return this.width * this.height
     }
 }
 
@@ -18,9 +18,14 @@ class Rectangle extends Shape {
         super(width, height)
     }
     getDiagonal(){
-        return `대각선의 길이는`
+        return Math.sqrt(this.width**2 + this.height**2)
     }
 }
+
+let rec2 = new Rectangle(3,4)
+console.log(rec2.getArea());
+console.log(rec2.getDiagonal());
+
 
 // Triangle
 class Triangle extends Shape {
@@ -28,19 +33,25 @@ class Triangle extends Shape {
         super(width, height)
     }
     getArea(){
-        return
+        return (this.width * this.height) / 2
     }
-
 }
+
+let tri = new Triangle(3,4)
+console.log(tri.getArea());
 
 // Circle
 class Circle extends Shape {
-    constructor(width, height){
+    constructor(width, height, radius){
         super(width, height)
-        this.radius = radius
+        this.radius = Math.PI
     }
     getArea(){
-        return
+        return this.width*this.height*this.radius
     }
 }
+
+let circle = new Circle(3,4)
+
+
 
