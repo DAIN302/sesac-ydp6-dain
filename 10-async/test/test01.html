@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    const bodyStyle = document.querySelector('body').style
+
+    function chgColor(color) {
+        return new Promise((res, rej)=>{
+            setTimeout(() => {
+                bodyStyle.backgroundColor = color;
+                res(color)
+            }, 1000);
+        })
+    }
+
+    async function chgBackColor() {
+        try {
+            await chgColor('red')
+            await chgColor('orange')
+            await chgColor('yellow')
+            await chgColor('green')
+            await chgColor('blue')
+        } catch(err){
+            console.log('error');
+        }
+    }
+
+    chgBackColor();
+</script>
+</html>
