@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        datalist {
+            display: flex;
+            justify-content: space-between; 
+            width: 200px;
+        }
+
+        option {
+            padding: 0;
+        }
+
+        input[type="range"] {
+            width: 200px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form action="/postForm" method="POST">
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name" required>
+        <fieldset>
+            <legend>성별</legend>
+            <label for="male">남자</label>
+            <input type="radio" name="gender" id="male" value="남자" required>
+            <label for="female">여자</label>
+            <input type="radio" name="gender" id="female" value="여자">
+        </fieldset>
+        <fieldset>
+            <legend>생년월일</legend>
+            <select name="year" id="year">
+                <% for(let i=1980; i <= 2024; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <span>년</span>
+            <select name="month">
+                <% for(let i=1; i <= 12; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <span>월</span>
+            <select name="day">
+                <% for(let i=1; i <= 31; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <span>일</span>
+        </fieldset>
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="interest" value="여행" id="travel">
+            <label for="travel">여행</label>
+            <input type="checkbox" name="interest" value="패션" id="fashion">
+            <label for="fashion">패션</label>
+            <input type="checkbox" name="interest" value="음식" id="food">
+            <label for="food">음식</label>
+        </fieldset>
+        <fieldset>
+            <legend>선택</legend>
+            <label for="color">좋아하는 색상</label>
+            <input type="color" name="color" id="color"><br>
+            <label for="score">10점 만점에??</label><br>
+            <input type="range" id="score" name="score" list="values" min="0" max="10" step="1">
+            <datalist id="values">
+                <% for(let i=0; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </datalist>
+        </fieldset>
+        <button>회원가입</button>
+    </form>
+</body>
+</html>
