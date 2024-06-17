@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .poke-box {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .poke-box img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <button onclick="showPokemon()">포켓몬 보여줘</button>
+    <div class="poke-box"></div>
+    <script>
+        const url = 'https://pokeapi.co/api/v2/pokemon/?limit=20'
+        const pokeBox = document.querySelector('.poke-box')
+        
+        const showPokemon = async () => {
+            try {
+                const res = await axios.get(url)
+                const result = res.data.results
+                let hcode = ``;
+                result.forEach((ele,idx)=>{
+                    hcode +=
+                    `
+                    <figure>
+                    <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/official-artwork/${idx+1}.png?raw=true">
+                    <div>${ele.name}</div>
+                    </figure>
+                    `
+                })
+                pokeBox.innerHTML = hcode
+            } catch(err){
+                console.error(err);
+            }
+        } 
+    </script>
+</body>
+</html>
