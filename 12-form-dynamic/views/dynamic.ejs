@@ -31,9 +31,19 @@
         <button type="button" onclick="fetchGet()">fetch get 방식 요청</button>
         <button type="button" onclick="fetchPOST()">fetch post 방식 요청</button>
     </form>
+    <button onClick="getTodos()">외부 API를 이용해 TODO 불러오기</button>
     <div class="result"></div>
     <script>
         const resultBox = document.querySelector(".result");
+
+        function getTodos(){
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                resultBox.textContent = `${json.title} (${json.completed ? 'done':'doing'})`
+            })
+        }
 
         // ajax get 방식 요청하는 함수
         function ajaxGet(){
@@ -108,7 +118,7 @@
                 // 이름 미입력 시 : "이름을 입력해주세요"
                 resultBox.textContent = '이름을 입력해주세요.'
             } 
-            else if(!form.gender[0].checkValidity() || !form.gender[1].checkValidity() ){
+            else if(!form.gender[0].checkValidity()){
                 // radio type의 인풋은 둘 중 하나라도 check되면 전부 true, 아니면 false 출력
                 // 아 그럼 굳이 위에서 둘다 잡을 필요는 없었겠군...
                 // 성별 미입력 시 : "성별을 선택해주세요"
@@ -117,6 +127,7 @@
             else {
             // 이름과 성별이 모두 입력되었다면 정상적으로 요청 날리기
             // 3. axios 비동기 통신 GET 방식
+                // 실습) axios code async/await 로 바꾸고 try...catch로 예외처리하기
                 axios({
                     method : 'GET',
                     // i) params 키를 이용하지 않는다면 요청 url에 query string 작성
