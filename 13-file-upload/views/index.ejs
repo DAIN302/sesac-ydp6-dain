@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%=title%></h1>
+    <!-- index.ejs 에서 제목, 사진 폼 제출 app.js에서 정보 받고 result.ejs 에서 입력한 정보 결과 보이기 -->
+    <h2>Single file upload</h2>
+    <!-- multer 이용 시, enctype="multipart/form-data" 적어줘야함 -->
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <!-- 파일 업로드 인풋 -->
+        <input type="file" name="userfile" id="userfile">
+        <!-- title -->
+        <input type="text" name="title" id="title"><br>
+        <button type="submit">업로드</button>
+    </form>
+</body>
+</html>
