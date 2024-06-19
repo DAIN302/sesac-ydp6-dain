@@ -1,6 +1,13 @@
+figure {
+    width: 200px;
+}
 .thumbnail {
     width: 200px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.img-title {
+    text-align: center;
 }

@@ -88,7 +88,8 @@ app.post('/upload/fields', uploadDetail.fields([{name:'apple'},{name:'banana'}])
 
 // 동적 폼 업로드
 app.post('/dynamicFile', uploadDetail.single('thumbnail'), (req,res)=>{
-    res.send(req.file)
+    console.log(req.body);
+    res.send({file : req.file, body : req.body})
 })
 
 
