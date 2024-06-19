@@ -21,6 +21,7 @@ app.use(express.json())
 
 // multer 미들웨어 등록
 app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/static', express.static(__dirname + '/public'))
 
 const uploadDetail = multer({
     storage : multer.diskStorage({ // 저장할 공간에 대한 정보 diskStorage -> 디스크에 저장하겠다고 설정
@@ -36,6 +37,8 @@ const uploadDetail = multer({
     }),
     limits : {fileSize : 5*1024*1024} // 업로드 크기 제한
 })
+
+
 
 app.get('/', (req, res)=>{
     res.render('index', {title : '파일 업로드 실습'})
@@ -82,6 +85,12 @@ app.post('/upload/fields', uploadDetail.fields([{name:'apple'},{name:'banana'}])
     // {apple: [{}], banana : [{}]} 객체 형태로 파일 정보 저장
     res.send('여러개의 파일 업로드 성공2')
 })
+
+// 동적 폼 업로드
+app.post('/dynamicFile', uploadDetail.single('thumbnail'), (req,res)=>{
+    res.send(req.file)
+})
+
 
 app.listen(PORT, ()=>{
     console.log(`http://localhost:${PORT}`);
