@@ -20,6 +20,7 @@ app.use(express.json())
 app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use('/static', express.static(__dirname + '/public'))
 
+// const upload = multer({dest : 'uploads/'})
 const uploadDetail = multer({
     storage : multer.diskStorage({
         destination(req, file, done){
@@ -27,7 +28,9 @@ const uploadDetail = multer({
         },
         filename(req, file, done){
             const ext = path.extname(file.originalname)
-            done(null, path.basename(file.originalname, ext) + ext)
+            const inputName = file.fieldname + 'Name'
+            const imgName = req.body[inputName]
+            done(null, imgName + ext)
         }
     })
 })
@@ -38,8 +41,12 @@ app.get('/', (req, res)=>{
 })
 
 // 파일업로드
-app.get('/upload', (req, res)=>{
-    res.send(req.query)
+app.post('/upload', uploadDetail.array('image'), (req, res)=>{
+    console.log(req.files); 
+})
+
+app.post('/uploads', uploadDetail.fields([{name : 'cookie1'}, {name : 'cookie2'}, {name : 'cookie3'}]), (req, res)=>{
+    console.log(req.files); 
 })
 
 app.listen(PORT, ()=>{

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name"><br>
+        <span>좋아하는 과일</span>
+        <select name="fruits" id="fruits">
+            <option value="사과">사과</option>
+            <option value="딸기">딸기</option>
+            <option value="포도">포도</option>
+            <option value="바나나">바나나</option>
+        </select>
+        <br>
+        <input type="file" name="image" id="image" multiple>
+        <br>
+        <button>제출</button>
+    </form>
+    <br><br><br><br><br>
+    <form action="/uploads" method="post" enctype="multipart/form-data">
+        <input type="text" name="cookie1Name" id="cookie1Name">
+        <input type="file" name="cookie1" id="cookie1">
+        <br>
+        <input type="text" name="cookie2Name" id="cookie2Name">
+        <input type="file" name="cookie2" id="cookie2">
+        <br>
+        <input type="text" name="cookie3Name" id="cookie3Name">
+        <input type="file" name="cookie3" id="cookie3">
+        <br>
+        <button>제출</button>
+    </form>
+</body>
+</html>
