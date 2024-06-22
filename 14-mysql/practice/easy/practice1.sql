@@ -16,3 +16,32 @@ orders 테이블의 book_id 컬럼은 books 테이블의 book_id와 관계를 �
 */
 
 
+create database bookstore character set utf8mb4 collate utf8mb4_unicode_ci;
+
+use bookstore;
+
+-- authors table
+create table authors (
+	author_id int primary key,
+    first_name varchar(50),
+    last_name varchar(50),
+    email varchar(50)
+);
+
+-- books
+create table books (
+	book_id int primary key,
+    title varchar(100),
+    author_id int,
+    publication_date date,
+    foreign key (author_id) references authors(author_id) on update cascade on delete cascade
+);
+
+-- orders
+create table orders (
+	order_id int primary key,
+    book_id int,
+    customer_name varchar(50),
+    order_date date,
+    foreign key (book_id) references books(book_id) on update cascade on delete cascade
+); 
