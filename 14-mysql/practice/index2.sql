@@ -7,6 +7,8 @@ create table user(
     age int(3) not null default 0
 );
 
+desc user;
+
 insert into user values 
 ('hong1234', '8o4bkg', '홍길동', 'M', '1990-01-31', 33),
 ('sexysung', '87awjkdf', '성춘향', 'F', '1992-03-31', 31),
@@ -29,7 +31,7 @@ select id, name from user where birthday between '1990-01-01' and '1999-12-31';
 -- 4. 6월생 회원의 목록을 birthday 기준으로 오름차순 정렬하여 가져오기
 select * from user where birthday like '%-06-%' order by birthday;
 -- 5. gender 컬럼 값이 'M'이고 1970년대에 태어난 회원목록 가져오기
-select * from user where gender = 'M' and birthday like '197%';
+select * from user where gender = 'M' and birthday between '1970-01-01' and '1979-12-31';
 -- 6. 모든 회원목록 age 기준으로 내림차순 정렬하여 가져오기(처음 3개의 값만)
 select * from user order by age limit 3;
 -- 7. 모든 회원 목록 중 나이가 25이상 50 이하인 회원 목록 출력

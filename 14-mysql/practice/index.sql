@@ -13,6 +13,8 @@ create table member(
     promotion varchar(2) default 'x'
 );
 
+desc member;
+
 -- table 수정
 alter table member modify id varchar(10);
 alter table member drop age;
