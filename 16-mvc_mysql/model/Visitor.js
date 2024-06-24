@@ -18,12 +18,24 @@ const conn = mysql.createConnection({
 
 
 exports.getVisitors = (callback) => {
+    // read all
     conn.query(`select * from visitor`, (err, rows) => {
       if (err) {
         throw err;
       }
       
-      console.log('model/Visitor.js >> ', rows);
+      // console.log('model/Visitor.js >> ', rows); // rows 는 배열로 들어온다
       callback(rows)
     })
-  };
+};
+
+exports.postVisitor = (data, callback) => {
+    conn.query(`insert into visitor(name, comment) values ('${data.name}', '${data.comment}')`),
+    (err,rows) => {
+        if(err) {
+            throw err
+        }
+        // console.log(rows);
+        callback(rows.insertId)
+    }
+}

@@ -1,10 +1,10 @@
 const multer = require('multer')
 const path = require('path')
 
-exports.uploadDetail = multer({
+exports.uploadDetail = (filePath) => multer({
     storage : multer.diskStorage({ // 저장할 공간에 대한 정보 diskStorage -> 디스크에 저장하겠다고 설정
         destination(req, file, done){ // 저장할 경로 설정
-            done(null, 'uploads/') // 파일을 저장할 경로
+            done(null, filePath) // 파일을 저장할 경로
         },
         filename(req, file, done){ // 디스크에 저장될 파일명 설정
             const ext = path.extname(file.originalname); // path.extname()-> 확장자만 추출
@@ -15,3 +15,4 @@ exports.uploadDetail = multer({
     }),
     limits : {fileSize : 5*1024*1024} // 업로드 크기 제한
 })
+

@@ -1,6 +1,6 @@
 const express = require('express')
 const controller = require('../controller/Cfile')
-const {uploadDetail} = require('../middlewares/upload-middleware')
+const { uploadDetail } = require('../middlewares/upload-middleware')
 const router = express.Router();
 
 router.get('/', controller.getMain)
