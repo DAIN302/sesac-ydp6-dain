@@ -1,10 +1,10 @@
 const multer = require('multer')
 const path = require('path')
 
-exports.uploadDetail = (filePath) => multer({
+const uploadDetail = (filepath) => multer({
     storage : multer.diskStorage({ // 저장할 공간에 대한 정보 diskStorage -> 디스크에 저장하겠다고 설정
         destination(req, file, done){ // 저장할 경로 설정
-            done(null, filePath) // 파일을 저장할 경로
+            done(null, filepath) // 파일을 저장할 경로
         },
         filename(req, file, done){ // 디스크에 저장될 파일명 설정
             const ext = path.extname(file.originalname); // path.extname()-> 확장자만 추출
@@ -16,3 +16,7 @@ exports.uploadDetail = (filePath) => multer({
     limits : {fileSize : 5*1024*1024} // 업로드 크기 제한
 })
 
+exports.singleUpload = uploadDetail('uploads/single').single('userfile')
+exports.arrayUpload = uploadDetail('uploads/array').array('userfiles')
+exports.fieldsUpload = uploadDetail('uploads/fields').fields([{name:'apple'},{name:'banana'}])
+exports.dynamicFile = uploadDetail('uploads/dynamic').single('thumbnail')

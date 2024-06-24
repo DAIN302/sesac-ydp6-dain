@@ -3,6 +3,7 @@ exports.getMain = (req, res) => {
 }
 
 exports.postUploadSingle = (req, res) => {
+    console.log(req.file);
     res.render('uploaded', {title : req.body.title, src: req.file.path})
 }
 
@@ -10,7 +11,7 @@ exports.postUploadArray = (req, res) => {
     console.log(req.body);
     console.log(req.files); // 여러개의 파일이라 files에 담김
     // {apple: [{}], banana : [{}]} 객체 형태로 파일 정보 저장
-    res.send('여러개의 파일 업로드 성공2')
+    res.send('여러개의 파일 업로드 성공1')
 }
 
 exports.postUploadFields = (req, res) => {
