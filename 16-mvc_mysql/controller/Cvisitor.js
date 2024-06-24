@@ -9,7 +9,7 @@ exports.getVisitors = (req, res) =>{
     // mysql 연결 후
     Visitor.getVisitors((result)=>{
         // result 매개변수 : model/visitor.js의 getVisitors의 callback(rows)의 "rows" 변수에 대응
-        console.log(result);
+        // console.log(result);
         // res.send('test')
         // res.render('visitor', {data : Visitor.getVisitors()})
         res.render('visitor', {data : result})
@@ -22,7 +22,7 @@ exports.postVisitor = (req, res) => {
 
     Visitor.postVisitor(req.body, (result)=>{
         // result -> row.insertId
-        // console.log(result);
+        console.log(result);
         res.send({id : result, name : req.body.name, comment : req.body.comment})
     })
 

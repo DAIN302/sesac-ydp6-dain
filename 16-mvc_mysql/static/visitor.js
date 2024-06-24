@@ -13,10 +13,10 @@ function createVisitor() {
             comment: form.comment.value,   
         }
     }).then((res) => {
-        console.log(res)
+        // console.log(res)
 
-        const { data } = res;
-
+        const { data } = res; // {id: 7, name: 'lily', comment: 'hihi'}
+        
         const html = `
             <tr id="tr_${data.id}">
                 <td>${data.id}</td>
@@ -25,8 +25,9 @@ function createVisitor() {
                 <td><button type="button">수정</button></td>
                 <td><button type="button">삭제</button></td>
             </tr>
-        `
-        // insertAdjacentHTML 특정 요소에 html 추가
-        tbody.insertAdjacentHTML('beforeend', html)
+        `;
+
+        // insertAdjacentHTML: 특정 요소에 html 추가
+        tbody.insertAdjacentHTML('beforeend', html);
     })
 }

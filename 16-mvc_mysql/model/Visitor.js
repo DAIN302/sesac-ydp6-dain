@@ -12,7 +12,7 @@ const mysql = require('mysql')
 const conn = mysql.createConnection({    
     host : 'localhost',
     user : 'user',
-    password : '12345678',
+    password : '1234',
     database : 'codingon'
 }); // database 연결 객체
 
@@ -30,12 +30,13 @@ exports.getVisitors = (callback) => {
 };
 
 exports.postVisitor = (data, callback) => {
-    conn.query(`insert into visitor(name, comment) values ('${data.name}', '${data.comment}')`),
-    (err,rows) => {
-        if(err) {
-            throw err
+    conn.query(`insert into visitor(name, comment) values ('${data.name}', '${data.comment}')`,
+        (err,rows) => {
+            if(err) {
+                throw err
+            }
+            // console.log(rows.insertId);
+            callback(rows.insertId)
         }
-        // console.log(rows);
-        callback(rows.insertId)
-    }
+    )
 }
