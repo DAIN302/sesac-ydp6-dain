@@ -11,6 +11,12 @@ SHOW tables;
 DROP TABLE IF EXISTS user;
 
 -- TODO: user 데이터베이스 생성
+CREATE TABLE user (
+    id int primary key auto_increment,
+    userid varchar(20) not null,
+    name varchar(10) not null,
+    pw varchar(20) not null
+)
 
 -- user 데이블 데이터 추가
 INSERT INTO user (userid, name, pw) VALUES ('sean', 'sean', '1234');
