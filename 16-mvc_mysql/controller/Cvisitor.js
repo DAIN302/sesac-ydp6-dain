@@ -16,6 +16,18 @@ exports.getVisitors = (req, res) =>{
     })
 }
 
+// 하나 조회
+exports.getVisitor = (req, res) => {
+    // 2개의 인자받음 
+    // 1)누구를 조회해야하는 지 정보 필요 -> req.params
+    // 2) sql 실행결과
+    Visitor.getVisitor(req.params.id, (result) => {
+        console.log(result);
+        res.send(result); // id값으로 조회
+    }); 
+}
+
+
 // 하나 추가
 exports.postVisitor = (req, res) => {
     console.log(req.body);
@@ -34,6 +46,15 @@ exports.deleteVisitor = (req, res) => {
     console.log(req.body);
     Visitor.deleteVisitor(req.body.id, (result)=>{
         console.log('controller', result);
+        res.send({ result })
+    })
+}
+
+// 하나 수정
+exports.patchVisitor = (req, res) => {
+    console.log(req.body);
+    Visitor.patchVisitor(req.body, (result)=>{
+        console.log('patch', result);
         res.send({ result })
     })
 }

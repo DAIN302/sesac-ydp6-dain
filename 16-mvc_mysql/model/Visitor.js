@@ -29,6 +29,18 @@ exports.getVisitors = (callback) => {
     })
 };
 
+exports.getVisitor = (targetId, callback) => {
+    conn.query(`select * from visitor where id=${targetId}`, (err, rows) => {
+      if (err) {
+        throw err;
+      }
+  
+      console.log('model/Visitor.js >> ', rows);
+      callback(rows[0])  
+    })
+  }
+
+
 exports.postVisitor = (data, callback) => {
     conn.query(`insert into visitor(name, comment) values ('${data.name}', '${data.comment}')`,
         (err,rows) => {
@@ -50,4 +62,16 @@ exports.deleteVisitor = (targetId, callback) => {
         console.log('model',rows);
         callback(true) // 삭제
     })
+}
+
+exports.patchVisitor = (updateData, callback) => {
+    const {id, name, comment} = updateData
+    conn.query(`update visitor set name='${name}', comment='${comment}' where id=${id}`, (err,rows)=>{
+        if(err){
+            throw err;
+        }
+        console.log('model', rows);
+        callback(true)
+    })
+    
 }
