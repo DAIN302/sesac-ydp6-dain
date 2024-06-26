@@ -6,7 +6,7 @@ exports.main = (req, res) => {
 
 // 회원가입 패이지 보여주기
 exports.getSignUp = (req,res) => {
-
+    res.render('signup')
 }
 
 // 새로운 회원 생성
@@ -16,7 +16,7 @@ exports.postSignUp = (req,res) => {
 
 // 로그인 페이지 보여주기
 exports.getSignIn = (req,res) => {
-
+    res.render('signin')
 }
 
 // 로그인 회원 조회

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/static/css/sign.css" />
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form name="form-register" id="form-register" class="sign-form">
+        <input
+          name="userid"
+          id="userid"
+          type="text"
+          required
+          placeholder="ID를 입력해주세요"
+          minlength="5"
+        />
+        <input
+          name="password"
+          type="password"
+          required
+          placeholder="비밀번호를 입력해주세요"
+          minlength="8"
+        />
+        <input
+          name="name"
+          id="name"
+          type="text"
+          required
+          placeholder="이름을 입력해주세요"
+          minlength="2"
+        />
+        <button type="button">가입하기</button>
+      </form>
+      <a href="/user/signin">로그인 하기</a>
+</body>
+</html>
