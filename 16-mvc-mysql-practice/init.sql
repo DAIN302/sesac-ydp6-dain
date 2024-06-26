@@ -16,7 +16,7 @@ CREATE TABLE user (
     userid varchar(20) not null,
     name varchar(10) not null,
     pw varchar(20) not null
-)
+);
 
 -- user 데이블 데이터 추가
 INSERT INTO user (userid, name, pw) VALUES ('sean', 'sean', '1234');
