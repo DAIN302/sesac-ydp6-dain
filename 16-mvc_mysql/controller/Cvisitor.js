@@ -28,3 +28,12 @@ exports.postVisitor = (req, res) => {
 
     // res.send('test')
 }
+
+// 하나 삭제
+exports.deleteVisitor = (req, res) => {
+    console.log(req.body);
+    Visitor.deleteVisitor(req.body.id, (result)=>{
+        console.log('controller', result);
+        res.send({ result })
+    })
+}

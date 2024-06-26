@@ -12,7 +12,7 @@ const mysql = require('mysql')
 const conn = mysql.createConnection({    
     host : 'localhost',
     user : 'user',
-    password : '1234',
+    password : '12345678',
     database : 'codingon'
 }); // database 연결 객체
 
@@ -39,4 +39,15 @@ exports.postVisitor = (data, callback) => {
             callback(rows.insertId)
         }
     )
+}
+
+exports.deleteVisitor = (targetId, callback) => {
+    // targetId : 삭제해야할 visitor id
+    conn.query(`delete from visitor where id =${targetId}`, (err, rows)=>{
+        if(err){
+            throw err
+        }
+        console.log('model',rows);
+        callback(true) // 삭제
+    })
 }
