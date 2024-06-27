@@ -11,6 +11,7 @@ exports.getSignUp = (req,res) => {
 
 // 새로운 회원 생성
 exports.postSignUp = (req,res) => {
+    console.log(req.body);
     User.postSignUp(req.body)
 }
 

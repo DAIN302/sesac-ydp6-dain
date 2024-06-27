@@ -36,15 +36,18 @@ async function createUser() {
 }
 
 async function login() {
-    console.log('로그인');
     const form = document.forms['form-login']
     const form_info = document.forms['form_info']
-
-    console.log(form);
     
     const data = {
         userid : form.userid.value,
         pw : form.password.value
+    }
+
+    const failLogin = () =>{
+        alert('로그인 실패! 아이디와 비밀번호를 확인해주세요.')
+        form.reset();
+        form_info.reset();
     }
 
     if(!form.userid.checkValidity()){
@@ -60,28 +63,21 @@ async function login() {
                 data
             })
             const result = loginAxios.data.result
-            console.log('front', result);
             if(result){
-                const { userid } = loginAxios.data.result
-                console.log('front2', userid);
+                const { userid } = result
                 form_info.userid.value = userid
                 alert('로그인 성공')
                 form_info.submit()
             } else{
-                alert('로그인 실패')
-                form.reset();
-                form_info.reset();
+                failLogin()
             }
         } catch(err){
-            alert('로그인 실패')
-            form.reset();
-            form_info.reset();
+            failLogin()
         }
     }
 }
 
 async function editProfile() {
-    //console.log('수정');
     const form = document.forms['form-profile']
     
     const data = {
@@ -117,9 +113,7 @@ async function editProfile() {
 async function deleteProfile() {
     console.log('삭제');
     const form = document.forms['form-profile']
-    const data = {
-        id : form.id.value
-    }
+    
     if(!confirm('탈퇴하시겠습니까?')){
         return;
     }
@@ -127,10 +121,8 @@ async function deleteProfile() {
         const deleteAxios = await axios({
             method : 'DELETE',
             url : '/user/profile/delete',
-            data
+            data : { id:form.id.value }
         })
-        console.log(deleteAxios.data.result);
-
         if(deleteAxios.data.result){
             alert('탈퇴 완료')
             document.location.href = '/'
