@@ -52,3 +52,13 @@ a {
     display: block;
     text-align: center;
 }
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 0 20px;
+}
+
+.btn-group button {
+    padding : 10px 20px;
+}
