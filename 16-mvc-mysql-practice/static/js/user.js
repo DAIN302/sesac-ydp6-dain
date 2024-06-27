@@ -21,13 +21,19 @@ async function createUser() {
     } else {
         $('.msg').empty();
         try {
-            alert('회원가입 성공')
-            document.location.href= '/user/signin'
-            await axios({
+            const registerAxios = await axios({
                 method : 'POST',
                 url : '/user/signup',
                 data
-            })        
+            })    
+            const result = registerAxios.data.result 
+            console.log(result);   
+            if(result) {
+                msgBox[0].textContent = '이미 존재하는 회원입니다.'
+            } else {
+                alert('회원가입 성공')
+                document.location.href= '/user/signin'
+            }
         } catch(err) {
             console.error(err);
             alert('알 수없는 에러가 발생했습니다.')

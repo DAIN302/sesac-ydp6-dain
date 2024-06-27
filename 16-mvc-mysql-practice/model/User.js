@@ -9,13 +9,25 @@ const conn = mysql.createConnection({
 })
 
 // 회원가입
-exports.postSignUp = (data) => {
-    conn.query(`INSERT INTO user (userid, name, pw) VALUES ('${data.userid}', '${data.name}', '${data.pw}');`,(err,rows)=>{
-        if(err) {
-            throw err;
+
+exports.postSignUp = (data, callback) => {
+    // 아이디 중복 검사
+    conn.query(`select * from user where userid='${data.userid}'`, (err,rows)=>{
+        if(err) throw err;
+        if(rows.length !== 0){
+            callback(rows[0])
+        } else {
+            conn.query(`INSERT INTO user (userid, name, pw) VALUES ('${data.userid}', '${data.name}', '${data.pw}');`,(err,rows)=>{
+                if(err) {
+                    throw err;
+                }
+                callback(undefined)
+            })
         }
     })
 }
+
+
 
 // 로그인
 exports.postSignIn = (data, callback) => {
