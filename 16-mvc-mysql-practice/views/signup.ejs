@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="/static/css/sign.css" />
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>회원가입</h1>
@@ -14,26 +18,30 @@
           id="userid"
           type="text"
           required
-          placeholder="ID를 입력해주세요"
-          minlength="5"
+          placeholder="ID를 입력해주세요(4글자 이상)"
+          minlength="4"
         />
+        <span class="msg"></span>
         <input
           name="password"
           type="password"
           required
-          placeholder="비밀번호를 입력해주세요"
-          minlength="8"
+          placeholder="비밀번호를 입력해주세요(4글자 이상)"
+          minlength="4"
         />
+        <span class="msg"></span>
         <input
           name="name"
           id="name"
           type="text"
           required
-          placeholder="이름을 입력해주세요"
+          placeholder="이름을 입력해주세요(2글자 이상)"
           minlength="2"
         />
-        <button type="button">가입하기</button>
+        <span class="msg"></span>
+        <button type="button" onclick="createUser()">가입하기</button>
       </form>
       <a href="/user/signin">로그인 하기</a>
+      <script src="/static/js/user.js"></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보</title>
+    <link rel="stylesheet" href="/static/css/sign.css" />
+</head>
+<body>
+    <h1>회원 정보</h1>
+    <a href="/">홈으로 가기</a>
+    <form name="form-profile" id="form-profile" class="sign-form">
+        <input
+          name="userid"
+          id="userid"
+          type="text"
+          minlength="5"
+          disabled
+        />
+        <input
+          name="password"
+          type="password"
+          required
+          minlength="8"
+        />
+        <input
+          name="name"
+          id="name"
+          type="text"
+          required
+          minlength="2"
+        />
+        <div class="btn-group">
+            <button type="button" id="edit">수정하기</button>
+            <button type="button" id="delete">회원탈퇴</button>
+        </div>
+      </form>
+</body>
+</html>

@@ -7,6 +7,7 @@ const PORT = 8888;
 app.set('view engine', 'ejs');
 app.set('views', './views'); 
 app.use('/static', express.static(__dirname + '/static'))
+
 //  body-parser 미들웨어 등록
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
