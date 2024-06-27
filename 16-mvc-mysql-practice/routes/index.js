@@ -2,7 +2,6 @@ const express = require('express')
 const controller = require('../controller/Cuser')
 const router = express.Router();
 
-// /user
 router.get('/', controller.main)
 
 // get -> /user/signup
