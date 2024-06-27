@@ -1,3 +1,5 @@
+create database codingon character set utf8mb4 collate utf8mb4_unicode_ci;
+
 use codingon;
 use mysql;
 show tables;
@@ -19,8 +21,10 @@ insert into visitor values
 
 select * from visitor; 
 
+truncate table visitor;
+
 -- user 계정 생성
-create user 'user'@'%' identified by '12345678'; -- 계정 추가
+create user 'user'@'%' identified by '1234'; -- 계정 추가
 grant all privileges on *.* to 'user'@'%' with grant option; -- 계정 권한 부여
 flush privileges; -- 캐시 지우고 새로운 설정 적용
 alter user 'user'@'%' identified with mysql_native_password by '12345678'; -- 인증방식변경
