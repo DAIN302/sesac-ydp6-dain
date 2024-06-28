@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 8000;
 const router = require('./routes/index');
+const playerRouter = require('./routes/player');
 const { sequelize } = require('./models/index')
 
 // 뷰 템플릿
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // 라우터 등록
 app.use('/', router);
+app.use('/players', playerRouter);
 
 // 모델 등록
 sequelize.sync({force:false}) // force : true -> 서버 실행때마다 테이블 재생성 / false -> 서버 실행 시 테이블이 없으면 생성
