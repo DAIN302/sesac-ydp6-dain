@@ -1,0 +1,44 @@
+ORM: "객체" & "관계형 데이터베이스의 데이터"를 매핑
+	code & 실제 database를 연결
+데이터베이스 종류: MySQL, MSSQL, ORACLE, ....
+	=> CURD
+	
+	SQL문 == query 문 == 질의문: 데이터베이스에 CRUD같은 작업을 명령하기 위한 명령어
+	SQL문을 사용하면 CRUD할 때 SQL 문법을 정확히 사용
+	ORM을 사용하게 되면 SQL문을 쓰지 않고도 CRUD를 할 수 있다 <-
+
+
+npx sequelize init 하면 생기는 폴더와 파일들 용어 정리
+migration : 데이터 변경 이력들을 저장??
+seaders : 가데이터 모아놓음?
+-> 여기선 안써서 삭제!
+
+config.json
+development : 개발 환경
+  "development": {
+    "username": "user", // mysql에서 쓰는 name
+    "password": "12345678", // mysql에서 접근할 때 쓰는 비번
+    "database": "codingon", // 데이터베이스 이름
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+test : 배포직전 테스트(테스트 환경)
+production : 사용자가 보는 거(실제 배포 환경)
+
+
+model = table
+model(code-VSCODE)/table(DB-MySQL)
+
+models의 index파일
+index가 이름이라서 제일 먼저 접근함(대표하는 파일)
+다른 모델들끼리 다 연결해줌
+
+해볼거
+모델 3개 만듦(Player, Profile, Team)
+Player : Profile = 1 : 1 
+한명의 선수는 하나의 프로필을 갖는다. -> 하나의 프로필이 가르키는 선수는 하나
+Player : Team = N : 1
+하나의 팀에는 여러명의 선수 존재 -> 한명의 선수는 하나의 팀에 속함
+
+관계 정의 (forein key)
+models/index에서 정의
