@@ -9,6 +9,8 @@ const  sequelize = new Sequelize(config.database, config.username, config.passwo
 const PlayerModel = require('./Player')(sequelize, Sequelize); // playerModel 함수를 불러온 후 매개변수 sequelize, Sequelize를 전달한 것
 const ProfileModel = require('./Profile')(sequelize, Sequelize); // playerModel 함수를 불러온 후 매개변수 sequelize, Sequelize를 전달한 것
 const TeamModel = require('./Team')(sequelize, Sequelize); // playerModel 함수를 불러온 후 매개변수 sequelize, Sequelize를 전달한 것
+const GameModel = require('./Game')(sequelize, Sequelize);
+const TeamGameModel = require('./TeamGame')(sequelize, Sequelize);
 
 // 모델간 관계 연결
 // 1) Player : Profile = 1 : 1
@@ -40,6 +42,21 @@ PlayerModel.belongsTo(TeamModel, {
   targetKey: 'team_id'
 });
 
+// 3) Team : Game = N : M
+// 하나의 팀은 여러 게임 가능, 한 게임에는 여러 팀이 참여
+// TeamGame : 관계 표시 -> through 키워드로 설정
+TeamModel.belongsToMany(GameModel, {
+  through : TeamGameModel, // 관계테이블
+  foreignKey : 'team_id', // TeamGameModel 에서 TeamModel을 참조하는 fk
+  otherKey : 'game_id' // TeamGameModel 에서 GameModel을 참조하는 fk
+})
+GameModel.belongsToMany(TeamModel, {
+  through : TeamGameModel,
+  foreignKey : 'game_id',
+  otherKey : 'team_id'
+})
+
+
 // db 객체에 할당
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
@@ -49,5 +66,7 @@ db.Player = PlayerModel;
 db.Profile = ProfileModel;
 db.Team = TeamModel;
 // db = { sequelize:sequelize. Sequelize : Sequelize, Player :PlayerModel, Profile: ProfileModel,Team:TeamModel }
+db.Game = GameModel;
+db.TeamGame = TeamGameModel;
 
 module.exports = db;

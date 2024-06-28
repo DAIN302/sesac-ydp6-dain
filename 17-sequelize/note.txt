@@ -39,6 +39,8 @@ Player : Profile = 1 : 1
 한명의 선수는 하나의 프로필을 갖는다. -> 하나의 프로필이 가르키는 선수는 하나
 Player : Team = N : 1
 하나의 팀에는 여러명의 선수 존재 -> 한명의 선수는 하나의 팀에 속함
+Team : Game = N : M
+TeamGame : 관계 표시
 
 관계 정의 (forein key)
 models/index에서 정의

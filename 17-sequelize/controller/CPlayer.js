@@ -1,5 +1,4 @@
 // 선수와 관련된 컨트롤러 모음
-const { where } = require('sequelize');
 const { Player, Profile } = require('../models/index')
 
 // 전체 선수 조회
