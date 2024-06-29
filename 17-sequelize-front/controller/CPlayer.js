@@ -1,11 +1,19 @@
 // 선수와 관련된 컨트롤러 모음
-const { Player, Profile } = require('../models/index')
+const { Player, Profile, Team } = require('../models/index')
 
 // 전체 선수 조회
 exports.getPlayers = async (req,res) => {
     try {
-        const players = await Player.findAll(); // select * from Player; 
-        res.json(players)
+        console.log(req.params);
+        const players = await Player.findAll({
+            include : [
+                {
+                    model : Team,
+                    attributes : ['name']
+                }
+            ] // join
+        }); // select * from Player; 
+        res.send(players)
     } catch(err){
         console.error(err);
         res.status(500).send('Internal Server Error')
@@ -24,7 +32,7 @@ exports.getPlayer = async (req,res) => {
             include : [
                 {
                     model : Profile,
-                    attributes : ['position', 'salary']
+                    attributes : ['position', 'type']
                 }
             ] // join
             

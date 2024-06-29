@@ -3,13 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠키 확인</title>
+    <title>쿠키 및 팀 목록</title>
     <link rel="stylesheet" href="/static/css/main.css" />
     <!-- Axios CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h1>쿠키 확인</h1>
-    <a href="/players">전체 선수 확인</a>
+    <header>
+        <h1>쿠키 및 팀 목록</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">홈</a>
+            </li>
+            <li>
+                <a href="/teams">전체 팀 목록</a>
+            </li>
+            <li>
+                <a href="/players">쿠키 목록</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section id="teams">
+            <h2>팀 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>로고</th>
+                        <th>팀 이름</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="" alt=""></td>
+                        <td>팀 1</td>
+                    </tr>
+                    <tr>
+                        <td><img src="" alt=""></td>
+                        <td>팀 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 쿠키 및 팀 목록 사이트</p>
+    </footer>
+    <script src="/static/js/index.js"></script>
 </body>
 </html>

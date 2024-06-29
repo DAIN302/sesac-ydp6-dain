@@ -1,2 +1,205 @@
 @import url(reset.css);
 @import url(common.css);
+
+
+/* 간단한 스타일링 */
+body {
+    line-height: 1.6;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap : 0 20px;
+}
+
+nav li {
+    border-radius: 5px;
+    background-color: #ddd;
+    box-sizing: border-box;
+}
+nav a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+nav li:hover {
+    background-color: #ccc;
+}
+main {
+    padding: 20px;
+    min-height: 100vh;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+#players {
+    margin-top: 30px;
+}
+
+#players ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#players li {
+    width: max(10vw, 200px);
+    overflow: hidden;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#players li .cookie-img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#players li .team{
+    position: absolute;
+    width: 140px;
+    top: 5px;
+    left: 10px;
+}
+
+.cookie {
+    position: relative;
+}
+
+.cookie figcaption {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+}
+
+.cookie.beast {
+    background: linear-gradient(135deg, rgb(64, 28, 39), rgb(21, 9, 9), rgb(85, 25, 37), rgb(255, 7, 77), rgb(76, 17, 42));
+}
+
+.cookie.dragon {
+    background: linear-gradient(135deg, #1B0B0E, #AE342D, #FF801F, #E4D27F, #B5C351);
+}
+
+.cookie.legendary {
+    background: linear-gradient(135deg, #CC66FF, #2E61FF, #00C2FF, #00EFD9, #7AEB5E, #34CA79);
+}
+.cookie.ancient {
+    background: linear-gradient(135deg, #2E1C40, #0D0915, #1C1955, #D507FF, #19114C);
+}
+
+.player-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    min-height: 500px;
+}
+
+.player-card > figure, .player-card > article {
+    width: 50%;
+}
+
+.player-card > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 20px 0;
+}
+
+.player-img {
+    height: 60vh;
+}
+
+.player-name {
+    color : #fff;
+    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+    font-size: 20px;
+}
+
+.player-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 15px;
+    color : #fff;
+    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+}
+
+.player-info img {
+    height: 25px;
+}
+
+
+
+.player-team-img {
+    height: 45px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+table th {
+    background-color: #f2f2f2;
+}
+table td img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+@media (max-width : 992px) {
+    .player-card {
+        flex-direction: column;
+    }
+
+    .player-card > figure {
+        width: 100%;
+    }
+
+    .player-img {
+        height: auto;
+        width: 100%;
+    }
+}
