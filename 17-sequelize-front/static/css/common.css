@@ -9,4 +9,67 @@ body{
     background-color: rgb(255, 233, 237);
     color:#2e363e;
     font-family: 'CookieRun-Regular';
+    line-height: 1.6;
+}
+
+#header {
+    background-color: #594D46;
+    width: 100%;
+}
+
+header {
+    max-width: 1200px;
+    color: #fff;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 img {
+    width: 100px;
+}
+nav {
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap : 0 20px;
+}
+
+nav li {
+    box-sizing: border-box;
+}
+nav a {
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color: #eee;
+    font-size: 18px;
+}
+
+#main {
+    /* background: url(../img/back.jpg) no-repeat center/cover; */
+    background-color: #F2F0E8;
+}
+
+main {
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.8);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding : 10px 0;
 }

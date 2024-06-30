@@ -1,53 +1,17 @@
 @import url(reset.css);
 @import url(common.css);
+@import url(variable.css);
+
 
 
 /* 간단한 스타일링 */
-body {
-    line-height: 1.6;
-}
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 30px;
-}
-nav {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: center;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap : 0 20px;
-}
-
-nav li {
-    border-radius: 5px;
-    background-color: #ddd;
-    box-sizing: border-box;
-}
-nav a {
-    padding: 10px 20px;
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-nav li:hover {
-    background-color: #ccc;
-}
-main {
-    padding: 20px;
-    min-height: 100vh;
-}
-
 h2 {
     font-size: 25px;
+    padding : 20px 0;
+}
+
+.swiper-slide img{
+    width: 100%;
 }
 
 #players {
@@ -92,22 +56,22 @@ h2 {
     width: 100%;
     font-size: 18px;
     color: #fff;
-    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+    text-shadow: var(--txtBorder);
 }
 
-.cookie.beast {
-    background: linear-gradient(135deg, rgb(64, 28, 39), rgb(21, 9, 9), rgb(85, 25, 37), rgb(255, 7, 77), rgb(76, 17, 42));
+.cookie.beast, #teams .beast h3 {
+    background: var(--beast);
 }
 
-.cookie.dragon {
-    background: linear-gradient(135deg, #1B0B0E, #AE342D, #FF801F, #E4D27F, #B5C351);
+.cookie.dragon, #teams .dragon h3 {
+    background: var(--dragon);
 }
 
-.cookie.legendary {
-    background: linear-gradient(135deg, #CC66FF, #2E61FF, #00C2FF, #00EFD9, #7AEB5E, #34CA79);
+.cookie.legendary, #teams .legendary h3 {
+    background: var(--legendary);
 }
-.cookie.ancient {
-    background: linear-gradient(135deg, #2E1C40, #0D0915, #1C1955, #D507FF, #19114C);
+.cookie.ancient, #teams .ancient h3 {
+    background: var(--ancient);
 }
 
 .player-card {
@@ -138,7 +102,7 @@ h2 {
 
 .player-name {
     color : #fff;
-    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+    text-shadow: var(--txtBorder);
     font-size: 20px;
 }
 
@@ -148,14 +112,12 @@ h2 {
     align-items: center;
     gap: 0 15px;
     color : #fff;
-    text-shadow: rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+    text-shadow: var(--txtBorder);
 }
 
 .player-info img {
     height: 25px;
 }
-
-
 
 .player-team-img {
     height: 45px;
@@ -163,31 +125,66 @@ h2 {
     margin-top: 30px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+#addCookie {    
+    width: 300px;
+    padding : 30px 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    border: 1px solid #ccc;;
 }
-table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+
+#addCookie fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
 }
-table th {
-    background-color: #f2f2f2;
+
+#addCookie legend {
+    font-size: 18px;
+    padding-bottom : 10px;
 }
-table td img {
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 50%;
-}
-footer {
-    background-color: #333;
-    color: #fff;
+
+#addCookie button {
+    width: 50%;
     text-align: center;
-    padding: 10px 0;
-    width: 100%;
+    padding : 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #ccc;
+    margin-top: 10px;
 }
+
+.teams-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap : 30px 0;
+}
+
+.team {
+    color : #fff;
+    text-shadow: var(--txtBorder);
+    text-align: center;
+    font-size: 20px;
+    padding : 10px 0;
+}
+
+.team h3 {
+    padding : 5px 0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.team .cookie-icon {
+    display: flex;
+    gap : 0 5px;
+}
+
+.cookie-icon li {
+    cursor: pointer;
+}
+
 
 @media (max-width : 992px) {
     .player-card {

@@ -1,0 +1,7 @@
+:root {
+    --dragon : linear-gradient(135deg, #1B0B0E, #AE342D, #FF801F, #E4D27F, #B5C351);
+    --beast : linear-gradient(135deg, rgb(64, 28, 39), rgb(21, 9, 9), rgb(85, 25, 37), rgb(255, 7, 77), rgb(76, 17, 42));
+    --legendary : linear-gradient(135deg, #CC66FF, #2E61FF, #00C2FF, #00EFD9, #7AEB5E, #34CA79);
+    --ancient : linear-gradient(135deg, #2E1C40, #0D0915, #1C1955, #D507FF, #19114C);
+    --txtBorder : rgb(30, 9, 0) -1px -1px 0px, rgb(30, 9, 0) 1px -1px 0px, rgb(30, 9, 0) -1px 1px 0px, rgb(30, 9, 0) 1px 1px 0px, rgb(30, 9, 0) -1px 0px 0px, rgb(30, 9, 0) 0px -1px 0px, rgb(30, 9, 0) 1px 0px 0px, rgb(30, 9, 0) 0px 1px 0px, rgb(30, 9, 0) 0px 2.3px 0px;
+}

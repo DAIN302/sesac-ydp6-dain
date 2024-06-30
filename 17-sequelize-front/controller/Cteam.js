@@ -24,10 +24,15 @@ exports.getTeams = async (req,res) => {
         } else {
             // 전체 팀 조회
             teams =  await Team.findAll({
-                attributes : ['team_id','name'] // SELECT `team_id`, `name` FROM `Team` AS `Team`;
+                attributes : ['team_id','name'], // SELECT `team_id`, `name` FROM `Team` AS `Team`;
+                include : {
+                    model : Player,
+                    attributes : ['name', 'player_id']
+                }
             })
         }       
         res.json(teams);
+        // res.render('teams')
     } catch(err){
         console.error(err);
         res.status(500).send('Internal Server Error')

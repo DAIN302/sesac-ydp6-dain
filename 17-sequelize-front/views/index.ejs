@@ -1,56 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠키 및 팀 목록</title>
-    <link rel="stylesheet" href="/static/css/main.css" />
-    <!-- Axios CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
+    <%- include('./partials/head.ejs') %>
 <body>
-    <header>
-        <h1>쿠키 및 팀 목록</h1>
-    </header>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">홈</a>
-            </li>
-            <li>
-                <a href="/teams">전체 팀 목록</a>
-            </li>
-            <li>
-                <a href="/players">쿠키 목록</a>
-            </li>
-        </ul>
-    </nav>
-    <main>
-        <section id="teams">
-            <h2>팀 목록</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>로고</th>
-                        <th>팀 이름</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="" alt=""></td>
-                        <td>팀 1</td>
-                    </tr>
-                    <tr>
-                        <td><img src="" alt=""></td>
-                        <td>팀 2</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 쿠키 및 팀 목록 사이트</p>
-    </footer>
-    <script src="/static/js/index.js"></script>
+    <%- include('./partials/header.ejs') %>
+    <div id="main">
+        <main>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/25.jpg" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/26.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/27.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/28.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/29.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="/static/img/swiper/30.png" alt="">
+                  </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+        </main>
+    </div>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
