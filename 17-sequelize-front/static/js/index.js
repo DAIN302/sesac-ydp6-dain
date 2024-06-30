@@ -1,5 +1,3 @@
-console.log('연결');
-
 const linkBtn = document.querySelectorAll('nav li a')
 const mainSection = document.querySelector('main')
 
@@ -33,11 +31,14 @@ async function getPlayers(e) {
         `
         PlayersData.forEach((ele) => {
             hcode += `
-                <li onclick="getPlayer(${ele.player_id})">
+                <li id="list_${ele.player_id}">
                     <figure class="${ele.Team.name} cookie">
                         <img src="/static/img/team/${ele.team_id}.png" alt="${ele.Team.name}" class="team"/>
+                        <button class="del-btn" onclick="deletePlayer(this, ${ele.player_id})">
+                            <span class="fa-solid fa-trash-can"></span>
+                        </button>
                         <img src="/static/img/cookie/${ele.name}.png" alt="${ele.name}" class="cookie-img"/>
-                        <figcaption>${ele.name}</figcaption>
+                        <figcaption onclick="getPlayer(${ele.player_id})">${ele.name}</figcaption>
                     </figure>
                 </li>
             ` 
@@ -102,6 +103,19 @@ async function getPlayer(id) {
                     </div>
                 </article>
             </div>
+            <form id="chgTeam" name="chgTeam">
+            <fieldset>
+            <legend>쿠키 등급 변경</legend>
+            <span>등급</span>
+            <select name="team_id">
+                <option value="1">Ancient</option>
+                <option value="2">Dragon</option>
+                <option value="3">Legendary</option>
+                <option value="4">Beast</option>
+            </select>
+            <button type="button" onclick="patchPlayer(${id})">변경하기</button>
+            </fieldset>
+        </form>
         </section>    
         `
         mainSection.innerHTML = hcode
@@ -148,11 +162,14 @@ async function postPlayer() {
 
         console.log(addData.team_id);
         const hcode = `
-                <li onclick="getPlayer(${addData.player_id})">
+                <li id="list_${addData.player_id}">
                     <figure class="${teamName} cookie">
                         <img src="/static/img/team/${addData.team_id}.png" alt="${teamName}" class="team"/>
+                        <button class="del-btn" onclick="deletePlayer(this, ${addData.player_id})">
+                            <span class="fa-solid fa-trash-can"></span>
+                        </button>
                         <img src="/static/img/cookie/${addData.name}.png" alt="${addData.name}" class="cookie-img"/>
-                        <figcaption>${addData.name}</figcaption>
+                        <figcaption  onclick="getPlayer(${addData.player_id})">${addData.name}</figcaption>
                     </figure>
                 </li>
         `
@@ -165,7 +182,45 @@ async function postPlayer() {
 
 }
 
+// 정보 변경
+async function patchPlayer(id) {
+    const form = document.forms['chgTeam']
+    console.log(form.team_id.value);
+    try {
+        const patchAxios = await axios({
+            method : 'PATCH',
+            url : `/players/${id}/team`,
+            data : { team_id : form.team_id.value }
+        })
+        console.log(patchAxios);
+        const cookieImg = document.querySelector(".player-team-img")
+        cookieImg.setAttribute('src', `/static/img/team/${form.team_id.value}.png`)
+    }catch(err){
+        console.error(err);
+        
+    }
+}
 
+// 삭제
+async function deletePlayer(obj, id) {
+    console.log('삭제', id);
+    if(!confirm('삭제하시겠습니까?')) {
+        return;
+    }
+    try {
+        const deleteAxios = await axios({
+            method : 'DELETE',
+            url : `/players/${id}`,
+            data : { id }
+        })
+        if(deleteAxios.data){
+            obj.closest(`#list_${id}`).remove()
+        }
+
+    }catch(err){
+        console.error(err);
+    }
+}
 
 
 // 전체 팀 조회
@@ -181,22 +236,30 @@ async function getTeams(e) {
         const teamsData = teamsAxios.data
         let hcode = `
             <section id="teams">
-                <h2>쿠키 등급 목록</h2>
-                <ul class="teams-list">
+                <h2>쿠키 등급 목록
+                    <button class="sort" onclick="getTeamsSort()">
+                        <span class="fa-solid fa-sort"></span>
+                    </button>
+                </h2>
+                <form name="search-form" id="search-form">
+                    <input type="text" placeholder="등급 이름 검색" name="search"/>
+                    <button type="button" onclick="getTeamSearch()">
+                        <span class="fa-solid fa-magnifying-glass"></span>
+                    </button>
+                </form>
+                <articel class="teams-box">
+                    <ul class="teams-list">
         `
         
         teamsData.forEach((ele,idx) => {
             const teamMember = ele.Players
-            // console.log(teamMember);
-            
             hcode += `
                  <li class="${ele.name} team">
-                    <h3 class=${ele.name}>${ele.name.charAt(0).toUpperCase() + ele.name.slice(1)}</h3>
+                    <h3 class=${ele.name} onclick="getTeam(${ele.team_id})">${ele.name.charAt(0).toUpperCase() + ele.name.slice(1)}</h3>
                     <ul class="cookie-icon">
             ` 
 
             teamMember.forEach(ele=>{
-                console.log(ele.name);
                 hcode += `
                     <li onclick="getPlayer(${ele.player_id})">
                         <img src="/static/img/icon/${ele.name}.png" alt="${ele.name}" title="${ele.name}"/>
@@ -210,11 +273,146 @@ async function getTeams(e) {
         });
 
         hcode += `
-            </ul>        
+            </ul> 
+            </article>       
         </section>
         `
         mainSection.innerHTML = hcode
     }catch(err){
+        console.error(err);
+    }
+}
+
+// 오름차순 정렬
+async function getTeamsSort(){
+    let data;
+    try {
+    const sortAxios = await axios({
+        method : 'GET',
+        url : '/teams?sort=name_asc',
+        data
+    })
+    const sortData = sortAxios.data
+    let hcode = `
+        <ul class="teams-list">
+    `
+    console.log(sortData);
+    sortData.forEach((ele,idx) => {
+        console.log(ele);
+        const teamMember = ele.Players
+        hcode += `
+             <li class="${ele.name} team">
+                <h3 class=${ele.name} onclick="getTeam(${ele.team_id})">${ele.name.charAt(0).toUpperCase() + ele.name.slice(1)}</h3>
+                <ul class="cookie-icon">
+        ` 
+
+        teamMember.forEach(ele=>{
+            hcode += `
+                <li onclick="getPlayer(${ele.player_id})">
+                    <img src="/static/img/icon/${ele.name}.png" alt="${ele.name}" title="${ele.name}"/>
+                </li>
+            `
+        })
+
+        hcode += `
+            </ul>
+        </li>`
+    });
+    hcode += `
+        </ul>        
+    `
+    const teamBox = document.querySelector(".teams-box")
+
+    teamBox.innerHTML = hcode
+    } catch(err){
+        console.error(err);
+    }
+}
+
+// 특정 팀 조회
+async function getTeamSearch(){
+    const form = document.forms['search-form']
+    const search = form.search.value
+    try{
+        const searchAxios = await axios({
+            method : 'GET',
+            url : `/teams?search=${search}`,
+            data : {search}
+        })
+        console.log(searchAxios.data);
+        let hcode = '<ul class="teams-list">';
+        const seachData = searchAxios.data
+        seachData.forEach(ele=>{
+            const teamMember = ele.Players
+            hcode += `
+                 <li class="${ele.name} team">
+                    <h3 class=${ele.name} onclick="getTeam(${ele.team_id})">${ele.name.charAt(0).toUpperCase() + ele.name.slice(1)}</h3>
+                    <ul class="cookie-icon">
+            ` 
+    
+            teamMember.forEach(ele=>{
+                hcode += `
+                    <li onclick="getPlayer(${ele.player_id})">
+                        <img src="/static/img/icon/${ele.name}.png" alt="${ele.name}" title="${ele.name}"/>
+                    </li>
+                `
+            })
+    
+            hcode += `
+                </ul>
+            </li>`
+        })
+        hcode += `
+        </ul>        
+        `
+        const teamBox = document.querySelector(".teams-box")
+
+        teamBox.innerHTML = hcode
+    }catch(err){
+        console.error(err);
+    }
+}
+
+async function getTeam(id) {
+    console.log(id);
+    let data = {};
+    try {
+        const teamAxios = await axios({
+            method : 'GET',
+            url : `/teams/${id}`,
+            data
+        })
+        const teamData = teamAxios.data
+        const teamPlayers = teamData.Players
+        console.log(teamPlayers);
+        
+        let hcode = `<ul class="teams-list">
+            <li class="${teamData.name} team">
+                <h3 class=${teamData.name}>${teamData.name.charAt(0).toUpperCase() + teamData.name.slice(1)}</h3>
+                <ul class="team-cookie">
+        `;
+
+        teamPlayers.forEach(ele=>{
+            hcode += `
+                <li id="list_${ele.player_id}">
+                    <figure class="${teamData.name} cookie">
+                        <img src="/static/img/team/${id}.png" alt="${teamData.name}" class="team"/>
+                        <button class="del-btn" onclick="deletePlayer(this, ${ele.player_id})">
+                            <span class="fa-solid fa-trash-can"></span>
+                        </button>
+                        <img src="/static/img/cookie/${ele.name}.png" alt="${ele.name}" class="cookie-img"/>
+                        <figcaption onclick="getPlayer(${ele.player_id})">${ele.name}</figcaption>
+                    </figure>
+                </li>
+            ` 
+        })
+
+        hcode += `</ul></li>`
+        
+        const teamBox = document.querySelector(".teams-box")
+        teamBox.innerHTML = hcode
+
+    } catch(err){
         console.error(err);
     }
 }

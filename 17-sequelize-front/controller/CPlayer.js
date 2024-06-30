@@ -70,6 +70,7 @@ exports.patchPlayer = async (req, res) => {
             // where 누구를 바꿈?
             { where : {player_id}} 
        );
+       console.log(updatedPlayer);
        res.json(updatedPlayer);
     } catch(err){
         console.error(err);

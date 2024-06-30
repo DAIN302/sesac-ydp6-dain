@@ -11,12 +11,19 @@ exports.getTeams = async (req,res) => {
             // 이름 기준 오름차순 정렬
             teams = await Team.findAll({
                 attributes : ['team_id','name'],
-                order : [['name', 'ASC']] // ORDER BY `Team`.`name` ASC;
+                include : {
+                    model : Player,
+                    attributes : ['name', 'player_id']
+                },
+                order : [['name', 'ASC']], // ORDER BY `Team`.`name` ASC;
             })
-
         } else if(search){
             teams = await Team.findAll({
                 attributes : ['team_id','name'],
+                include : {
+                    model : Player,
+                    attributes : ['name', 'player_id']
+                },
                 where : {
                     name : {[Op.like]: `%${search}%`} // LIKE '%KT%';
                 }
@@ -45,6 +52,10 @@ exports.getTeam = async (req,res)=>{
         const { team_id } = req.params;
 
         const team = await Team.findOne({
+            include : {
+                model : Player,
+                attributes : ['name', 'player_id']
+            },
             where : {team_id}
         })
         
