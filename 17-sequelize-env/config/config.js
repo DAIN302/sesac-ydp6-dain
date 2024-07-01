@@ -1,14 +1,14 @@
 const dotenv = require('dotenv');
 const path = require('path');
 dotenv.config({
-    path: path.resolve(__dirname, '.env'),
+    path: path.resolve(__dirname, '../.env'),
 }); 
 
 const dbName = process.env.DATABASE_NAME;
 const dbUser = process.env.DATABASE_USER;
 const dbPw = process.env.DATABASE_PW;
 
-exports.config = {
+exports.configData = {
     development : {
         username: dbUser, // env
         password: dbPw, // env

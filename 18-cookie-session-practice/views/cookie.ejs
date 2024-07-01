@@ -36,6 +36,11 @@
       </div>
       <script>
         const modal = document.querySelector("#exampleModal")
+        const popUp = '<%= popup%>'
+        if(popUp==='hide'){
+          modal.remove();
+        }
+
         async function closeModal() {
             const isChecked = document.querySelector("#cookie").checked;
             if(isChecked){
@@ -43,16 +48,13 @@
                     const checkAxios = await axios({
                         method : 'GET',
                         url : '/setCookie',
-                        data : {}
                     })
-                    console.log(checkAxios.data.popup);
                 }catch(err){
                     console.error(err);
                 }
             }
             modal.remove();
         }
-        console.log(document.cookie);
       </script>
 </body>
 </html>

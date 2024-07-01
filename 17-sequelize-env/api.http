@@ -1,4 +1,4 @@
-@server = http://localhost:8000
+@server = http://localhost:8888
 @player_id = 1
 
 @team_id = 1
