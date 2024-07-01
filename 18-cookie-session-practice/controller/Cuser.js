@@ -12,7 +12,6 @@ exports.postLogin = (req, res) => {
             console.log('controller',result);
             res.render('login', {
                 userid : result.userid,
-                pw : result.pw,
                 name : result.name
             })
         } else {
