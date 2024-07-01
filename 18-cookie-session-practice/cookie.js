@@ -19,7 +19,11 @@ const cookieConfig = {
 }
 
 app.get('/', (req, res) => {
-    res.render('cookie');
+    if(req.cookies.popup==="hide"){
+        res.render('cookie');
+    } else {
+        res.render('cookie')
+    }
 });
 
 app.get('/setCookie', (req, res) => {
