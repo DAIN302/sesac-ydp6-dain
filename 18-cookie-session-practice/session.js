@@ -24,8 +24,13 @@ app.use(session({
     secret : process.env.COOKIE_SECRET, 
     resave : false, 
     saveUninitialized : false,
+    cookie : {
+        httpOnly : true, 
+        secure : false, 
+        expires : 1800 * 1000 // 단위(ms), expires : 만료기간 설정
+    }
 }))
-// 인자로 세션에 대한 설정 객체를 넣음
+// 
 
 // 라우터 등록
 const indexRouter = require('./routes/index')
