@@ -3,6 +3,7 @@
 const express = require('express')
 const path = require('path')
 const dotenv = require('dotenv')
+const path = require('path')
 const app = express()
 
 // dotenv 모듈을 이용해서 .env파일의 환경 변수를 불러옴
