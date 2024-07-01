@@ -1,37 +1,39 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+const session = require('express-session')
+const dotenv = require('dotenv');
+const path = require('path');
 const app = express();
-const port = 8080;
+dotenv.config({
+    path: path.resolve(__dirname, '.env'),
+}); 
+
+const port = process.env.PORT; 
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-const today = new Date()
-const expireDate = new Date()
-expireDate.setDate(today.getDate() + 1)
+// static 미들웨어
+app.use('/static', express.static(__dirname + '/static'))
 
-// cookie-parser 미들웨어 
-app.use(cookieParser());
-const cookieConfig = {
-    httpOnly: true, 
-    expires: expireDate, 
-    signed: false,
-}
+//  body-parser 미들웨어 등록
+app.use(express.urlencoded({extended : true}))
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    if(req.cookies.popup==="hide"){
-        res.render('cookie', { popup : req.cookies.popup});
-        console.log(req.cookies);
-    } else {
-        res.render('cookie', { popup : ''})
-    }
-});
+// express-session 미들웨어 등록
+app.use(session({
+    secret : process.env.COOKIE_SECRET, 
+    resave : false, 
+    saveUninitialized : false,
+}))
+// 인자로 세션에 대한 설정 객체를 넣음
 
-app.get('/setCookie', (req, res) => {
-    res.cookie('popup', 'hide', cookieConfig)
-    res.send(req.cookies)
-});
+// 라우터 등록
+const indexRouter = require('./routes/index')
+app.use('/', indexRouter)
+
 
 app.listen(port, () => {
     console.log(`Sever is running! The port number is ${port} ...`);
+    
 })
+
