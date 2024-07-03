@@ -9,7 +9,6 @@ const conn = mysql.createConnection({
 })
 
 // 회원가입
-
 exports.postSignUp = (data, callback) => {
     // 아이디 중복 검사
     conn.query(`select * from user where userid='${data.userid}'`, (err,rows)=>{
@@ -27,15 +26,14 @@ exports.postSignUp = (data, callback) => {
     })
 }
 
-
-
 // 로그인
 exports.postSignIn = (data, callback) => {
     conn.query(`select * from user where userid='${data.userid}' and pw='${data.pw}'`, (err, rows)=>{
         if(err) {
             throw err;
         }
-        console.log(rows);
+
+        // console.log('model signin', rows[0]);
         callback(rows[0])
     })
 }
@@ -46,28 +44,28 @@ exports.postProfile = (data, callback) => {
         if(err) {
             throw err;
         }
+        //console.log('model',rows);
         callback(rows[0])
     })
 }
 
-// 회원 정보 수정
 exports.patchProfile = (updateData, callback) => {
     const {id, pw, name} = updateData
     conn.query(`update user set pw='${pw}', name='${name}' where id=${id}`, (err, rows)=>{
         if(err) {
             throw err;
         }
+        // console.log('model',rows);
         callback(true)
     })
 }
 
-// 회원 탈퇴
 exports.deleteUser = (targetId, callback) => {
     console.log('targetID',targetId);
     conn.query(`delete from user where id=${targetId}`, (err, rows)=>{
         if(err){
             throw err
         }
-        callback(true)
+        callback(true) // 삭제
     })
 }

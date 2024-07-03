@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/static/css/sign.css" />
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form name="form-register" id="form-register" class="sign-form">
+        <input
+          name="userid"
+          id="userid"
+          type="text"
+          required
+          placeholder="ID를 입력해주세요(4글자 이상)"
+          minlength="4"
+        />
+        <span class="msg"></span>
+        <input
+          name="pw"
+          type="password"
+          required
+          placeholder="비밀번호를 입력해주세요(4글자 이상)"
+          minlength="4"
+        />
+        <span class="msg"></span>
+        <input
+          name="name"
+          id="name"
+          type="text"
+          required
+          placeholder="이름을 입력해주세요(2글자 이상)"
+          minlength="2"
+        />
+        <span class="msg"></span>
+        <button type="button" onclick="createMember()">가입하기</button>
+      </form>
+      <div class="link-group">
+        <a href="/login">로그인 하기</a>
+        <a href="/">홈으로 가기</a>
+      </div>
+      <script src="/static/js/user.js"></script>
+</body>
+</html>

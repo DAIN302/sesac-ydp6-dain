@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/static/css/sign.css" />
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>    
+</head>
+<body>
+    <h1>로그인</h1>
+    <form name="form_info" action="/user/profile" method="POST">
+        <input type="hidden" name="userid">
+    </form>
+    <form name="form-login" id="form-login" class="sign-form">
+        <input
+          name="userid"
+          id="userid"
+          type="text"
+          required
+          placeholder="ID를 입력해주세요"
+          minlength="4"
+        />
+        <span class="msg"></span>
+        <input
+          name="pw"
+          type="password"
+          required
+          placeholder="비밀번호를 입력해주세요"
+          minlength="4"
+        />
+        <span class="msg"></span>
+        <button type="button" onclick="login()">로그인</button>
+      </form>
+      <div class="link-group">
+        <a href="/register">가입하기</a>
+        <a href="/">홈으로 가기</a>
+      </div>
+      <script src="/static/js/user.js"></script>
+</body>
+</html>

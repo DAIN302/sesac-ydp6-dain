@@ -33,4 +33,8 @@ router.patch('/user/profile/edit', controller.patchProfile)
 router.delete('/user/profile/delete', controller.deleteUser)
 
 
+
+
+
+
 module.exports = router;

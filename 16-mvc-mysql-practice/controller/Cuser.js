@@ -11,11 +11,7 @@ exports.getSignUp = (req,res) => {
 
 // 새로운 회원 생성
 exports.postSignUp = (req,res) => {
-    console.log(req.body);
-    User.postSignUp(req.body, (result)=>{
-        console.log('controller', result);
-        res.send({result})
-    })
+    User.postSignUp(req.body)
 }
 
 // 로그인 페이지 보여주기

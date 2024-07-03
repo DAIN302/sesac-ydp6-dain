@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인, 회원가입 실습</title>
-</head>
-<body>
-    <h1>Welcome to Practice HOME!</h1>
-    <h2>로그인 해주세요 ^_____^</h2>
-    <a href="/register"></a>
-    <a href="/login"></a>
-</body>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Cookie Talk</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="welcome-header">
+      <h1 class="welcome-header__title">환영합니다!</h1>
+      <img
+        src="/static/img/pearl.webp"
+        class="welcome-header__img"
+      />
+      <% if(name){ %>
+        <h2 class="welcome-header__subtitle"><%= name%>님 어서오세요! 😊</h2>
+      <% } else { %>
+        <h2 class="welcome-header__subtitle">로그인 해주세요 😊</h2>
+      <% } %>
+    </div>
+    <ul class="sign-group">
+        <% if(name){ %>
+          <li>
+              <a href="/profile">내 프로필</a>
+          </li>
+          <li>
+              <a href="/users">전체회원</a>
+          </li>
+          <li>
+              <a href="/logout">로그아웃</a>
+          </li>
+        <% } else { %>
+            <li>
+                <a href="/register">회원가입</a>
+            </li>
+            <li>
+                <a href="/login">로그인</a>
+            </li>
+        <% } %>
+    </ul>
+    <script
+      src="https://kit.fontawesome.com/2041668019.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

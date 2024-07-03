@@ -6,8 +6,6 @@ const PORT = 8888;
 // 뷰 템플릿
 app.set('view engine', 'ejs');
 app.set('views', './views'); 
-
-// static 미들웨어
 app.use('/static', express.static(__dirname + '/static'))
 
 //  body-parser 미들웨어 등록

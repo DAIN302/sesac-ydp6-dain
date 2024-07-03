@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-image: linear-gradient(rgba(5, 17, 242, 0.3), rgba(61, 157, 242, 0.3), rgba(78, 217, 237, 0.3), rgba(129, 216, 255, 0.3));
+    background-repeat: no-repeat;
+    height: 100vh;
+    color:#2e363e;
+    font-family: 'CookieRun-Regular';
+}
