@@ -1,5 +1,5 @@
 {
-  "name": "20-encrypt-practice",
+  "name": "21-socket.io",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "express-session": "^1.18.0",
-    "mysql2": "^3.10.2",
-    "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "socket.io": "^4.7.5"
   }
 }
