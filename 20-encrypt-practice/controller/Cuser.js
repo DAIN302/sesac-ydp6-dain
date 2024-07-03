@@ -55,6 +55,10 @@ exports.postLogin = async (req, res) => {
                 where : {userid},
                 attributes : ['userid', 'pw', 'name']
             })
+            if(isMember===null) {
+                req.session.loggedin = false;
+                res.send(undefined)
+            }
             if(comparePw(pw, isMember.pw)){
                 req.session.loggedin = true
                 req.session.name = isMember.name
