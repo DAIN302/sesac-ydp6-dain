@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOM CHAT</title>
+    <!-- socket CDN -->
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        #body {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            background-color: pink;
+        }
+
+        #chat {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #notice {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            color: #aaa;
+        }
+
+        #notice p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>채팅방</h1>
+    <!-- 채팅방 설정 -->
+    <div id="main">
+        <form id="room">
+            <input type="text" id="roomName" placeholder="채팅방 만들기">
+            <input type="text" id="userName" placeholder="닉네임 입력">
+            <button>생성</button>
+        </form>
+    </div>
+    <!-- 채팅창 화면 -->
+    <div id="body" hidden>
+        <div id="message">
+            <div id="notice"></div>
+        </div>
+        <!-- 채팅 입력 구간 -->
+        <form id="chat">
+            <select id="userList"></select>
+            <input type="text" id="chatMessage" placeholder="메시지 입력">
+            <button>입력</button>
+        </form>
+    </div>
+    <script>
+        // 1. 변수 정의
+        const socket = io();
+
+        const roomForm = document.querySelector('#room');
+        const chatForm = document.querySelector('#chat');
+        const notice = document.querySelector('#notice');
+        const message = document.querySelector('#message');
+        // 내 닉네임 담을 변수
+        let myName = '';
+
+        // form 이벤트 사용(서버에게 요청)
+
+        // 2 채팅방 생성
+        roomForm.addEventListener('submit', (e)=>{
+            e.preventDefault(); // 제출 이벤트 방지(페이지 새로고침 방지)
+            const roomName = document.querySelector('#roomName').value; // 채팅방 제목
+            const userName = document.querySelector('#userName').value; // 채팅방 제목
+            
+            if(roomName === '' || userName === ''){
+                alert('방 제목과 닉네임을 입력하세요');
+                return;
+            }
+
+            socket.emit('create', {roomName, userName})
+            const main = document.querySelector('#main');
+            const body = document.querySelector('#body');
+            main.hidden = true;
+            body.hidden = false;
+            myName = userName; // 닉네임 저장
+        })
+
+        // socket 이벤트
+        // 3. 공지 알림(본인 제외)
+        socket.on('notice', (res)=>{
+            const div = document.createElement('div');
+            const p = document.createElement('p');
+            console.log('notice', res);
+
+            p.textContent = res;
+
+            div.appendChild(p)
+            notice.appendChild(div)  
+        })
+
+        // 4. 유저 리스트 갱신
+        socket.on('userList', (res)=>{
+            console.log('클라이언트쪽', res);
+            const list = document.querySelector('#userList')
+            let options = `<option value="all">전체</option>`
+            for(let i of res){
+                options += `<option value="${i.key}">${i.userName}</option>`
+            }
+
+            list.innerHTML = options
+        })
+
+    </script>
+</body>
+</html>
