@@ -22,6 +22,12 @@ app.get('/', (req,res)=>{
 // 사용자 닉네임 모음 객체
 const nickObjs = {}
 
+// 실습 3-2-3
+// 유저 목록 업데이트
+function updateList() {
+    io.emit('updateNicks', nickObjs) // 전체 사용자 닉네임 모음 객체 클라이언트에 전달
+}
+
 // io.on() : 소켓 관련한 통신 작업을 처리
 // connection 이벤트 : 클라이언트가 접속 했을 때 발생
 io.on('connection', (socket)=>{
@@ -49,7 +55,7 @@ io.on('connection', (socket)=>{
     })
 
     // 실습 3 : 채팅창 입장 안내 문구
-    io.emit('notice', `${socket.id} 님이 입장하셨습니다.`)
+    // io.emit('notice', `${socket.id} 님이 입장하셨습니다.`)
 
     // 실습 3-2 : 채팅창 입장 문구 socket.id를 닉네임으로 바꾸기
     // emit() from server 
@@ -58,10 +64,60 @@ io.on('connection', (socket)=>{
     // - io.to(소켓아이디).emit(event_name, data) : 소켓아이디에 해당하는 클라이언트에게만 전송(ex. 귓속말)
 
     socket.on('setnick', (nick)=>{
-        console.log(`닉네임 설정 완료 ${nick}님이 입장하셨습니다.`);
+        // console.log(`닉네임 설정 완료 ${nick}님이 입장하셨습니다.`);
 
         // 실습 3-2-1
         // 프론트에서 입력한 nick이 nickObjs에 존재하는지 중복 검사
+        // 이미 존재 : error 이벤트 + '이미 존재하는 닉네임 입니다.'
+        // => 클라이언트 : error 이벤트 받으면 alert창 띄우기
+        // 새 닉네임 :  notice 이벤트 띄우기 + ${nick}님이 입장하셨습니다.
+        if(Object.values(nickObjs).indexOf(nick) > -1 ){ // -1보다 큼 -> 닉네임이 이미 존재함
+            socket.emit('error', '이미 존재하는 닉네임입니다.')
+        } else { 
+            // 새로운 닉네임
+            nickObjs[socket.id] =  nick
+            console.log('접속 유저 목록', nickObjs);
+            io.emit('notice', `${nick}님이 입장하셨습니다.`) // 전체 공지
+
+            // 실습 3-2-2 
+            socket.emit('entrySuccess', nick) // 해당 소켓 데이터 전송
+            // 실습 3-2-3
+            updateList()
+        }
+    })
+
+    // 실습 3-3 : 클라이언트 퇴장 시
+    // "notice" 이밴트로 퇴장 공지
+    socket.on("disconnect", ()=>{
+        console.log('접속 끊김', `${nickObjs[socket.id]} 님이 퇴장`, socket.id);
+        io.emit('notice', `${nickObjs[socket.id]}님이 퇴장하셨습니다.`)
+        delete nickObjs[socket.id];
+        updateList();
+    })
+
+    // 실습4 : 채팅창 메시지 전송
+    // send 이벤트 받아서 모두에게 newMessage 이벤트로 
+    socket.on('send', (data)=>{
+        console.log('서버측 data', data);
+        
+        // 실습 5 : DM 기능 추가
+        // DM인지 아닌지 구분
+        // io.to(소켓아이디).emit(event_name, data) : 소켓아이디에 해당하는 클라이언트에게만 전송
+        if(data.dm === 'all'){
+            // 전체 발송
+            io.emit('newMessage', {nick: data.myNick, msg : data.msg})
+        } else{
+            // dm 발송
+            let dmSocketId = data.dm
+            const sendData = {
+                nick : data.myNick,
+                msg : data.msg,
+                dm : '(속닥속닥)'
+            }
+            io.to(dmSocketId).emit('newMessage', sendData) // dm을 보내야하는 타켓에게 메세지 전송
+            socket.emit('newMessage', sendData)
+            console.log('dm', sendData);
+        }
     })
 })
 

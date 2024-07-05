@@ -18,6 +18,7 @@
             height: 500px;
             padding: 10px;
             overflow-y: auto;
+            position: relative;
         }
 
         .chat-list div {
@@ -25,7 +26,8 @@
         }
         .chat-list div div {
             display: inline-block;
-            padding: 3px;
+            padding: 3px 10px;
+            border-radius: 10px;
         }
 
         .my-chat {
@@ -39,6 +41,10 @@
             background-color: #fff;
         }
 
+        .secret-chat.other-chat div {
+            background-color: lightyellow;
+        }
+
         /* 실습 3 채팅창 입장 안내 문구 */
         .notice{
             text-align: center;
@@ -46,6 +52,14 @@
             font-size: 12px;
         }
 
+        .d-none {
+            display: none;
+        }
+
+        .msg-box {
+            position: absolute;
+            bottom: 0;
+        }
 
     </style>
 </head>
@@ -59,24 +73,29 @@
 
     <!-- 실습 3-2 : 채팅창 입장 문구 socket.id를 닉네임으로 바꾸기 -->
     <div class="entry-box">
-        <input type="text" name="" id="nickname" placeholder="닉네임을 적어주세요" autofocus 
-        onkeypress="if(window.event.keyCode=13){join()}">
+        <input type="text" name="" id="nickname" placeholder="닉네임을 적어주세요" autofocus>
         <button onclick="join()">입장</button>
     </div>
 
     <!-- [참고] keyCode 아는 방법 -->
     <!-- enter의 keyCode = 13 -->
-    <input type="text" id="myInput">
+    <!-- <input type="text" id="myInput"> -->
 
     <!-- 실습 2 : 채팅 UI 만들기 -->
-    <main class="chat-box">
+    <main class="chat-box d-none">
         <div class="chat-list">
-            <div class="my-chat">
+            <!-- <div class="my-chat">
                 <div>user1 : msg1</div>
             </div>
             <div class="other-chat">
                 <div>user2 : msg2</div>
-            </div>
+            </div> -->
+        </div>
+        <!-- 메시지 전송 영역 -->
+        <div class="msg-box">
+            <select id="nick-list"></select>에게
+            <input type="text" id="message">
+            <button type="button" onclick="send()">전송</button>
         </div>
     </main>
 
@@ -89,6 +108,8 @@
         //     console.log(e.keyCode);
         // })
 
+        
+
         let socket = io(); // socket 사용을 위한 객체 생성
         // socket.on('connect', ()=>{
         //     console.log('클라이언트 연결 완료', socket.id);
@@ -96,6 +117,8 @@
         //     console.log(socket);
         // }) // 소켓 연결 완료
         // 위의 메서드를 쓰지 않아도 소켓 CDN 라이브러리 불러옴으로써 연결된것!
+
+        let myNick // 내 닉네임을 담을 곳
 
         // 실습 1 
         function sayHello() {
@@ -153,8 +176,98 @@
             socket.emit('setnick', nickName.value)       
         }
 
+        // 실습 3-2-1 : 채팅창 입장 문구
+        // 닉네임 중복 -> alert창 띄우기
+        socket.on('error', (data)=>{
+            alert(data)
+        })
 
+        // 실습 3-2-2 : 닉네임 입력창 비활성화
+        socket.on('entrySuccess', (nick)=>{
+            myNick = nick // 내 닉네임 저장
+            console.log('내 닉네임', myNick);
+            document.querySelector('#nickname').disabled = true; // 인풋창 비활성화 
+            document.querySelector(".entry-box > button").disabled = true; // 버튼창 비활성화
+            document.querySelector('.chat-box').classList.remove('d-none');
+        })
 
+        // 실습 3-2-3
+        // 유저 목록 업데이트 (select 박스의 option태그 갯수 변경)
+        socket.on('updateNicks', (nickObjs)=>{
+            // console.log('클라이언트 닉네임 목록', nickObjs);
+            let options = `<option value="all">전체</option>`
+
+            for(let nick in nickObjs){ // 사실 변수명은 암묵적으로 key로 많이 사용함
+                // 추가 실습 나에게 dm 시 메시지 2번 찍히는 이슈(option태그에 본인 제외)
+                if(nick!==socket.id) {
+                    options += 
+                    `<option value="${nick}">${nickObjs[nick]}</option>`
+                }    
+            }
+
+            document.querySelector("#nick-list").innerHTML = options
+        })
+
+        // 실습 4 : 채팅창 메시지 전송
+        function send() {
+            // send 이벤트 전송
+            const data = {
+                // 전체 : all, 그외 다른 닉네임 : socket.id
+                // 위의 option 값에 value값을 socket.id로 정함
+                dm : document.querySelector('#nick-list').value, // 누구에게
+                myNick, // 내 닉네임
+                msg : document.querySelector('#message').value, // 메시지 내용
+            }
+
+            console.log('data',data);
+            socket.emit('send', data)
+            document.querySelector('#message').value = ''; // input값 초기화
+        }
+
+        // 실습 4-2 채팅창 메시지 전송
+        // newMessage를 받아서 닉네임 : 입력창 내용 보여주기
+        // 내가 보낸 메시지 -> 오른쪽 / 다른 사람이 보낸 메시지 -> 왼쪽
+        socket.on('newMessage', (data)=>{
+            console.log('클라이언트 측 메시지 데이터',data);
+
+            let chatList = document.querySelector('.chat-list')
+            let chatBox = document.querySelector('.chat-box')
+            let div = document.createElement('div') // .my-chat or .other-chat
+            let divChat = document.createElement('div') // 가장 안쪽 div - 대화 내용
+            if(myNick === data.nick) {
+                // 내가 보낸 메시지
+                div.classList.add('my-chat')
+            } else {
+                div.classList.add('other-chat')
+            }
+
+            // 실습 5 : dm기능 추가
+            if(data.dm){
+                div.classList.add('secret-chat');
+                divChat.textContent = data.dm
+            }
+
+            // 실습 4-2 : 실제 대화내용이 추가되는 부분
+            divChat.textContent += `${data.nick} : ${data.msg}`
+            div.append(divChat)
+            chatList.append(div)
+
+            // 메시지가 많아져서 스크롤이 생기더라도 하단에 고정
+            chatBox.scrollTop = chatBox.scrollHeight
+        })
+
+        document.querySelector('#nickname').addEventListener('keypress', (e)=>{
+            if(e.keyCode === 13) {
+                join()
+            }  
+        })
+        document.querySelector('#message').addEventListener('keypress', (e)=>{
+            if(e.keyCode === 13) {
+                send()
+            }  
+        })
+
+        
     </script>
 </body>
 </html>
