@@ -100,6 +100,7 @@ exports.patchProfile = async (req, res) => {
             where : {userid},
             attributes : ['pw']
         })
+
         const updateName = async () => {
             const updateName = await Member.findOne({
                 where : {userid},
@@ -108,6 +109,7 @@ exports.patchProfile = async (req, res) => {
             req.session.name = updateName.name
             res.send('edit')
         }
+        
         if(comparePw(pw, isPwMatch.pw)){ // 비밀번호 같으면 메시지 보여주기
             res.send('same')
         } else if(pw===isPwMatch.pw) { // 비밀번호가 같으면 닉네임만 수정
