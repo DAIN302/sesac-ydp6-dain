@@ -34,6 +34,6 @@ const hashedPw = hashPw(originalPw)
 
 // 비교 
 const isMatch = comparePw(originalPw, hashedPw)
-console.log(isMatch ? '비번 일치' : '비번 불일치');
+console.log('isMatch : ',isMatch ? '비번 일치' : '비번 불일치');
 const isMatch2 = comparePw('1233', hashedPw)
-console.log(isMatch2 ? '비번 일치' : '비번 불일치');
+console.log('isMatch2 : ',isMatch2 ? '비번 일치' : '비번 불일치');
