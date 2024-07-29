@@ -17,17 +17,17 @@ import './larva.css'
 function Larva(){
     return (
         <>
-            <div class="container">
-                <div class="worm worm1">
-                    <div class="eye">
-                        <div class="eyeball"></div>
+            <div className="container">
+                <div className="worm worm1">
+                    <div className="eye">
+                        <div className="eyeball"></div>
                     </div>
                 </div>
-                <div class="worm worm2"></div>
-                <div class="worm worm3"></div>
-                <div class="worm worm4"></div>
-                <div class="worm worm5"></div>
-                <div class="grass"></div>
+                <div className="worm worm2"></div>
+                <div className="worm worm3"></div>
+                <div className="worm worm4"></div>
+                <div className="worm worm5"></div>
+                <div className="grass"></div>
             </div>
         </>
     )
