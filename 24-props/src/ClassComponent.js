@@ -4,6 +4,7 @@
 import React from 'react';
 // 여기서 React는 컴포넌트를 import 하기 위해 필요 -> 상속받으려고
 // import {Component} from 'react'; -> 이렇개 불러와도됨
+import PropTypes from 'prop-types';
 
 class ClassComponent extends React.Component {
     // 클래스 인스턴스 속성, 키워드 없이 정의(let, const, var)
@@ -29,7 +30,23 @@ class ClassComponent extends React.Component {
             </>
         )
     }
+
+    static defaultProps = {
+        name: '춘향전',
+    }
+
+    static propTypes = {
+        name: PropTypes.string,
+    }
 }
+
+// ClassComponent.defaultProps = {
+//     name : '메롱'
+// }
+
+// ClassComponent.propTypes = {
+//     name : PropTypes.string
+// }
 
 export default ClassComponent;
 
