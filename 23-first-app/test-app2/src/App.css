@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.practice-form {
+  margin-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.practice-form h4 {
+  background-color: rgb(255, 238, 207);
+  color : brown;
+  font-size: 30px;
+}
+
+.practice-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}

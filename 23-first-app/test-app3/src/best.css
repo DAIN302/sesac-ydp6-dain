@@ -1,0 +1,13 @@
+.best {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: beige;
+}
+
+.best h2 {
+    color : orange;
+}
+
+.best img {
+    width: 300px;
+}
