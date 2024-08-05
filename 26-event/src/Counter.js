@@ -21,10 +21,10 @@ const Counter = () => {
     const handleEvent = (e) => {
         console.log('타켓', e.target);
         // e.target 
-        // -> 부모로부터 이벤트가 위임되어 발생하는 자식의 위치, 내가 클릭한 자식 요소
+        // -> 부모로부터 이벤트가 위임되어 발생하는 자식의 위치, 내가 클릭한 자식 요소, 이벤트 타겟
         console.log('커렌트타겟', e.currentTarget);
         // e.curretTarget 
-        // -> 이벤트 핸들러가 있는 요소
+        // -> 이벤트 핸들러가 있는 요소(이벤트를 처리중인 element)
     }
 
   return (
