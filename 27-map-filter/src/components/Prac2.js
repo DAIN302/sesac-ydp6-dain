@@ -61,7 +61,6 @@ export default function Prac2() {
                                 </tr>
                             )
                         })
-
                     }
                 </tbody>
             </table>
