@@ -23,17 +23,28 @@ export default function Base() {
 
     // map() 함수 사용
     const Items = numbers.map((value, idx, arr)=> {
-        console.log('현재 값', value); 
-        console.log('인덱스', idx); 
-        console.log('원본 배열', arr); 
+        // console.log('현재 값', value); 
+        // console.log('인덱스', idx); 
+        // console.log('원본 배열', arr); 
 
         return (
-            <li>
+            <li key={idx}>
                 값 : {value}, 인덱스 : {idx}, 배열 : {arr.join(',')}
             </li>
         )
 
     })
+
+    // filter() 함수 사용
+    let animals = ['dog', 'cat', 'rabbit']
+    let newAnimals = animals.filter((animal)=> {
+      return animal.length > 3
+    })
+    
+    let words = ['dog', 'cat', 'rabbit']
+    let result = words.filter(word => word.includes('a'))
+
+    
 
   return (
     <div>
@@ -44,8 +55,13 @@ export default function Base() {
       <h1>Map (2)</h1>
       {/* return 문 안에 map() 함수 직접 작성 */}
       <ul>
-        {numbers.map((value, idx, arr)=> <li>값 : {value}, 인덱스 : {idx}, 배열 : {arr.join(',')}</li>)}
+        {numbers.map((value, idx, arr)=> <li key={idx}>값 : {value}, 인덱스 : {idx}, 배열 : {arr.join(',')}</li>)}
       </ul>
+      <h1>Filter (1)</h1>
+      <ul>{newAnimals.join(',')}</ul>
+      <h1>Filter (2)</h1>
+      <ul>{result.join(',')}</ul>
+
 
     </div>
   )

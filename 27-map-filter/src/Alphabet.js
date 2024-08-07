@@ -25,7 +25,6 @@ export default function Alphabet() {
         // concat 
         // 원본 배열을 변경하지 않고, 주어진 배열이나 값들을 새로운 배열로 결합하여 반환
         // push() 메서드와 비슷하지만 원본배열을 변경하지 않는 점이 다르다 (push는 기존 배열에 추가하는 것, concat은 새로운 배열에 결합해서 반환)
-
         const newAlpha = alphabet.concat({
             id : alphabet.length + 1,
             alpha : inputAlpha
@@ -33,6 +32,15 @@ export default function Alphabet() {
 
         setAlphabet(newAlpha)
         setInputAlpha('') // 입력 칸 초기화
+    }
+
+    // 알파벳 삭제하는 함수
+    const deleteAlpha = (targetId) => {
+        console.log(targetId); // 삭제될 요소의 Id
+
+        const newAlpha = alphabet.filter(alpha => alpha.id !== targetId) 
+        // 더블 클릭한 요소를 삭제해아 하므로 타겟아이디와 일치하지 않은 요소를 배열에 새로 담음
+        setAlphabet(newAlpha)
     }
 
   return (
@@ -49,6 +57,11 @@ export default function Alphabet() {
       <input type='text' placeholder='알파벳 입력' value={inputAlpha} onChange={(e)=>{setInputAlpha(e.target.value)}} 
       onKeyDown={(e)=>{if(e.keyCode === 13){addAlpha()}}} />
       <button onClick={addAlpha}>클릭</button>
+
+      {/* 알파벳 삭제해보기 */}
+      <ol>
+        {alphabet.map(value => <li key={value.id} onDoubleClick={() => deleteAlpha(value.id)}>{value.alpha}</li>)}
+      </ol>
     </div>
   )
 }
