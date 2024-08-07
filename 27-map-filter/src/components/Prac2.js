@@ -25,14 +25,14 @@ export default function Prac2() {
 
   return (
     <div>
-        <form>
+        <form style={{margin : '20px'}}>
             <label htmlFor='writer'>작성자 :</label>
             <input type='text' id='writer' placeholder='작성자' value={writer} onChange={(e)=>setWriter(e.target.value)}/>
             <label htmlFor='title'>제목 :</label>
             <input type='text' id='title' placeholder='제목' value={title} onChange={(e)=>setTitle(e.target.value)}/>
             <button onClick={addPost}>작성</button>
         </form>
-        <div>
+        <div style={{margin : '20px'}}>
             <select>
                 <option value='writer'>작성자</option>
                 <option value='title'>제목</option>
@@ -40,8 +40,8 @@ export default function Prac2() {
             <input type='text' placeholder='검색어' />
             <button>검색</button>
         </div>
-        <div>
-            <table>
+        <div style={{margin : '20px'}}>
+            <table border="1" cellPadding="10" cellSpacing="1">
                 <thead>
                     <tr>
                         <th>번호</th>
