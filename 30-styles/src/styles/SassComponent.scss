@@ -1,0 +1,83 @@
+// 파일명 대문자로 시작
+// 해당 파일이 특정 react 컴포넌트와 밀접하게 연관되어 있다는 것을 나타냄
+// sass 파일은 컴포넌트 단위로 작성되는 경우가 많아서 컴포넌트와 동일한 이름을 사용해서 관리하기 쉽도록 함
+
+// SASS styling
+
+// #1. 변수 사용
+@import './utils';
+@import './variables';
+
+// $color-first : red;
+// $color-second : orange;
+// $color-third : yellow;
+// $animation-duration : .4s;
+
+// $boxinnersize : 30px;
+// $breakpoint-sm : 360px;
+
+
+// #3. mixin (함수) 선언(정의)
+// @mixin box($size){
+//     width: $size;
+//     height: $size;
+// }
+
+// #2. 중첩 - 부모 자식 표현 가능
+.container {
+    display: flex;
+    margin : {
+        top : $boxinnersize;
+        bottom: $boxinnersize;
+    }
+    padding : {
+        top : $boxinnersize;
+    }
+    border : {
+        top : 1px solid #000;
+    }
+    .box {
+        // width: 100px;
+        // height: 100px;
+        // mixin 호출
+        @include box(150px);
+
+        // & : 부모 선택자 참조
+        &.red {
+            background-color: $color-first;
+        }
+        &.orange {
+            background-color: $color-second;
+        }
+        &.yellow {
+            background-color: $color-third;
+        }
+        &:hover {
+            // #4. 연산 기능 
+            $box-animation : $animation-duration * 2;
+            transform: translateY(-29px);
+            transition: transform $box-animation;
+        }
+    }
+}
+
+.btn {
+    padding: 10px;
+    margin: 10px;
+    border : 1px solid #000;
+}
+
+.btn-primary {
+    // #5. 확장 - 기존 선택자 스타일을 다른 선택자에게 상속
+    @extend .btn;
+    background-color: $color-third;
+}
+
+@media (max-width : #{$breakpoint-sm}) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+// 문자열 보간 방법
+// #{} 구문을 사용하여 변수의 값을 문자열 내에 삽입
