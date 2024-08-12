@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import PostList from './PostList'
+import PostList2 from './PostList2'
 
-import './postlist.css'
+import './styles/PostList.scss'
 
 export default function Prac2() {
     const [posts, setPosts] = useState([])
@@ -16,8 +17,9 @@ export default function Prac2() {
 
   return (
     <>
-        <h1>Post List</h1>
-        { posts.length > 0 ? <PostList lists={posts} /> : <div>Loading</div>}
+        <h1 className='title'>Post List</h1>
+        {/* { posts.length > 0 ? <PostList lists={posts} /> : <div>Loading</div>} */}
+        { posts.length > 0 ? <PostList2 lists={posts} /> : <div>Loading</div>}
     </>
   )
 }

@@ -12,8 +12,8 @@ function App() {
       {/* <CssModuleComponent />
       <SassComponent />
       <StyledComponent /> */}
-      {/* <Larva /> */}
-      <MoveBall />
+      <Larva />
+      {/* <MoveBall /> */}
     </div>
   );
 }

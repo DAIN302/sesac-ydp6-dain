@@ -19,8 +19,8 @@ function App() {
       <RefSample4 /> */}
       {/* <LifeCycleClass /> */}
       {/* <LifeCycleFunction /> */}
-      <Prac1 />
-      {/* <Prac2 /> */}
+      {/* <Prac1 /> */}
+      <Prac2 />  
     </div>
   );
 }

@@ -1,10 +1,9 @@
-$bodyColor : (rgb(0, 0, 166),  rgb(36, 61, 206), rgb(52, 118, 231), rgb(47, 146, 233), rgb(140, 191, 253));
-
-$body1 : rgb(0,0,166);
-$body2 : rgb(36, 61, 206);
-$body3 : rgb(52,118,231); 
-$body4 : rgb(47,146,223);
-$body5 : rgb(140,191,253);
+$body : 
+"body1" rgb(127, 0, 166) 100px 100px,  
+"body2" rgb(172, 36, 206) 160px 150px, 
+"body3" rgb(180, 52, 231) 200px 190px,
+"body4" rgb(218, 47, 233) 220px 240px, 
+"body5" rgb(230, 140, 253) 280px 280px;
 
 .larva {
     position: relative;
@@ -13,47 +12,28 @@ $body5 : rgb(140,191,253);
             height: 100px;
             border-radius: 50%;
             position: absolute;
-            &.body1 {
-                top : 100px;
-                left: 100px;
-                background-color: $body1;
-                .eye {
-                    border-radius: 50%;
-                    position: absolute;
-                    &.eye-white {
-                        background-color: #fff;
-                        width: 50px;
-                        height: 50px;
-                    }
-                    &.eye-black {
-                        background-color: black;
-                        width: 20px;
-                        height: 20px;
-                        top: 12px;
-                        left: 10px;
-                    }
+            @each $name, $color, $x, $y in $body {
+                &.#{$name} {
+                    background-color: $color;
+                    left : $x;
+                    top : $y;
                 }
             }
-            &.body2 {
-                top : 150px;
-                left: 160px;                
-                background-color: $body2;
+        }
+        .eye {
+            border-radius: 50%;
+            position: absolute;
+            &.eye-white {
+                background-color: #fff;
+                width: 50px;
+                height: 50px;
             }
-            &.body3 {
-                top: 190px;
-                left: 200px;
-                background-color: $body3;
-            }
-            &.body4 {
-                top : 240px;
-                left: 220px;
-                background-color: $body4;
-            }
-            &.body5 {
-                top : 280px;
-                left: 280px;
-                background-color: $body5;
-                z-index: 10;
+            &.eye-black {
+                background-color: black;
+                width: 20px;
+                height: 20px;
+                top: 12px;
+                left: 10px;
             }
         }
         .grass {

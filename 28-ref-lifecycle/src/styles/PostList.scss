@@ -1,0 +1,59 @@
+@import './reset';
+@import './variables';
+
+body {
+    background-image: $gradient;
+}
+
+.title {
+    font : {
+        size : 60px;
+        family : 'MangoByeolbyeol';
+    }
+    height: $size-lg;
+    line-height: $size-md;
+    background-color: $bgColor;
+    text-align: center;
+    color : $titleColor;
+    margin-bottom: $size-md;
+    padding : $size-sm 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid $borderColor;
+}
+
+.post-lists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px 0;
+    font-family: 'MangoDdobak-B';
+    .post-list {
+        border : {
+            color : $borderColor;
+            radius : $size-sm;
+            style : solid;
+            width : 1px;
+        }
+        width: 700px;
+        box-sizing: border-box;
+        padding : $size-sm;
+        background-color: $bgColor;
+        .post-title {
+            font : {
+                size: $size-sm;
+                width: bold;
+            }
+            color : $titleColor;
+            margin-bottom: $size-sm;
+            .post-number {
+                color : $numberColor;
+                font-weight: bold;
+            }
+        }
+        .post-content {
+            font-size: 18px;
+            color : $contentColor;
+        }
+    }
+}

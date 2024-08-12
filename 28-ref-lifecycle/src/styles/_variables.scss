@@ -1,0 +1,24 @@
+$headerColor : #ff6a88;
+$numberColor : #faccd4;
+$titleColor : #fff;
+$contentColor : rgba(255,255,255,0.8);
+$borderColor : rgba(255,255,255,0.6);
+$bgColor : rgba(255,255,255,0.22);
+$gradient : linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+$size-sm : 20px;
+$size-md : 50px;
+$size-lg : 100px;
+
+@font-face {
+    font-family: 'MangoByeolbyeol';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoByeolbyeol.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
