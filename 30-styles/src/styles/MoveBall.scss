@@ -1,0 +1,35 @@
+$ballColor : (ball1 :pink, ball2 : yellow, ball3: green);
+$ball1Move : 10px;
+$ball2dMove : 20px;
+$ball3Move : 30px;
+
+@mixin ballMove($position) {
+    animation: ballMoveAni 4s linear infinite;
+    @keyframes ballMoveAni {
+        25% {
+            transform: translate($position , 0)
+        };
+        50% {
+            transform: translate($position, $position)
+        }; 
+        75% {
+            transform: translate(0, $position)
+        };
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+}
+
+.ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    @each $key, $color in $ballColor {
+        &.#{$key} {
+            background-color: $color;
+            @include ballMove($ball1Move)
+        }
+    }
+}
+
