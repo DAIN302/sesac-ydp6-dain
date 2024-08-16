@@ -1,0 +1,16 @@
+a {
+    color : black;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.Main {
+    background-color: #ddd;
+}
+
+.Main.Dark {
+    background-color: #333;
+    color : #fff;
+}
