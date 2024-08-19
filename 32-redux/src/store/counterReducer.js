@@ -14,10 +14,11 @@ const MINUS = 'counter/minus';
 ‘type’ → 액션의 유형을 설명하는 문자열(필수 속성)
 [추가 데이터 종류]
 payload / meta / error
+- payload : 액션 객체에서 추가적인(구체적인) 데이터를 전달하는 속성
 */
 
-export const plus = () => ({type : PLUS}) // plus 액션 생성
-export const minus = () => ({type : MINUS}) // minus 액션 생성
+export const plus = (num) => ({type : PLUS, payload : num}) // plus 액션 생성 // 증가시킬 값을 payload로 전달
+export const minus = (num) => ({type : MINUS, payload: num}) // minus 액션 생성 // 감소시킬 값을 payload로 전달
 
 // #3. state 초기값 정의
 const initialState = {
@@ -27,8 +28,8 @@ const initialState = {
 // #4. 리듀서 정의(상태, 액션 받음)
 const counterReducer = (state = initialState, action) => {
     switch(action.type){
-        case PLUS : return {number : state.number + 1};  // 1증가
-        case MINUS : return {number : state.number - 1}; // 1감소
+        case PLUS : return {number : state.number + 1 + action.payload};  // 1증가 // payload 만큼 증가
+        case MINUS : return {number : state.number - 1 - action.payload}; // 1감소 // payload 만큼 감소
         default : return state; // 기본 상태
     }
 }

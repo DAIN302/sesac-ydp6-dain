@@ -13,7 +13,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // #6. store 생성
 // (전통 redux 방식) -> 'createStore' 키워드 사용
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, 
+  // Redux DevTools Extension 사용하는 경우 -> Toolkit 쓰면 이거 안해줘도 됨
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 root.render(
   <React.StrictMode>
