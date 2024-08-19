@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './styels/Box.css'
+import './styles/Box.css'
 
 function App2() {
   // #7. useSelector Hook 사용하여 Redux 스토어에서 상태 읽어오기

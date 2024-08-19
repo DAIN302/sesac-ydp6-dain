@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import './styels/Box.css'
+import './styles/Box.css'
 import { minus, plus } from './store/counterReducer';
 import { changeVisibility } from './store/isVisibleReducer';
 

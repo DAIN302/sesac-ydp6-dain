@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './styels/Box.css'
+import './styles/Box.css'
 
 function App() {
   const [number, setNumber] = useState(100)

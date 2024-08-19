@@ -7,6 +7,7 @@ import App2 from './App2';
 import App3 from './App3';
 import counterReducer from './store/counterReducer';
 import rootReducer from './store';
+import App4 from './App4';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +25,8 @@ root.render(
       <App2 />
       <hr />
       <App3 />
+      <hr />
+      <App4 />
 
     </Provider>
   </React.StrictMode>
