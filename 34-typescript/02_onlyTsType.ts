@@ -85,7 +85,7 @@ enum Cafe {
     latte = "카페라떼",
 }
 
-console.log(Cafe.americano, Cafe.latte);
+//console.log(Cafe.americano, Cafe.latte);
 
 
 // 문자열 & 숫자 혼합 지정 가능
@@ -99,8 +99,8 @@ enum Cake {
 }
 // 근데 문자열 지정한거 바로 다음꺼는 값 지정 안하면 에러남
 
-console.log(Cake);
-console.log(Cake.choco, Cake.vanilla, Cake.mango, Cake.kiwi);
+//console.log(Cake);
+//console.log(Cake.choco, Cake.vanilla, Cake.mango, Cake.kiwi);
 
 
 // Any
@@ -113,6 +113,144 @@ val = 'dog'
 let val2; // 타입 지정안하면 any로 알아서 타입 지정되나봄
 val2 = false;
 val2 = 'cat';
+
+
+// interface
+// #1. 객체 타입 정의
+// - interface 키워드 사용
+interface Crew {
+    name : string;
+    readonly age : number;
+    exp : boolean;
+}
+
+const crew1:Crew = {
+    name : 'joy',
+    age : 3,
+    exp : false
+}
+// console.log(crew1);
+/*
+    "Crew" 인터페이스는 세 가지 속성 요구
+    crew1 객체는 이 구조를 따라야함
+    객체 안에 순서는 상관없음
+*/
+
+// #2. 선택적 속성
+// 모든 속성이 필수는 아님
+// ? 붙이기
+interface Crew2 {
+    name : string; 
+    age? : number; // age는 선택적 속성 -> 써도 되고 안써도 돼
+}
+
+const crew2 : Crew2 = {
+    name : 'sadness',
+}
+
+const crew22 : Crew2 = {
+    name : 'anger',
+    age : 44
+}
+
+//console.log(crew2);
+//console.log(crew22);
+// crew2 객체는 age 속성이 없어도 유효
+
+// #3. readOnly 읽기 전용 속성
+// 객체가 초기화 된 후에는 변경 불가
+const crew3 : Crew = {
+    name : 'disgust',
+    age : 4,
+    exp : true
+}
+
+// console.log(crew3);
+crew3.name = 'joy2'
+// crew3.age = 30 -> age속성이 readonly라서 못봐꿔
+
+// console.log(crew3);
+
+// #4. 상속 가능
+enum Score {
+    Aplus = 'A+',
+    A = 'A',
+    B = 'B',
+    C = 'C'
+}
+
+// #5. 인터페이스 확장
+// 기존 인터페이스의 모든 속성 포함 및 속성 추가
+interface Team extends Crew {
+    // {name, age, exp }의 속성을 가지게 됨
+    position : string
+    readonly personal? : number
+    [grade : number] : Score
+    // 인덱스 시그니쳐 : 객체가 어떤 키로든 접근할 수 있도록 허용, 키와 그에 대응하는 값의 타입을 정의할 수 있는 방법 제공
+    // [grade : number] - 숫자인 Key
+    // [grade : number] : string - 숫자 key 를 가진 객체가 문자열 값을 가질 것임을 명시
+}
+
+const first : Team = {
+    name : 'joy',
+    age : 20,
+    exp : true,
+    position : 'FrontEnd',
+    1 : Score.Aplus
+}
+
+//console.log(first);
+
+// 값 변경 가능 (점 접근법, 대괄호 법)
+first.position = 'BackEnd';
+// first['age'] = 25; -> readonly 라 못봐꿔
+first['exp'] = false
+
+// console.log(first);
+
+// #6. 교차 타입 : 두 개 이상의 인터페이스를 합치는 것
+interface Toy {
+    name : string;
+    start() : void; // void : 아무것도 return 하지 않는 함수를 대상으로 사용
+}
+
+interface Car {
+    name : string; // 공통된 속성을 가지고 있어도 상관음슴
+    color : string;
+    price : number;
+}
+
+interface ToyCar extends Toy, Car {} // 인터페이스 확장을 사용한 교차 타입
+
+const toyCar:ToyCar = {
+    name : 'tayo',
+    start(){
+        console.log('타요 출발');
+    },
+    color : 'blue',
+    price : 10000
+}
+
+//console.log(toyCar);
+//console.log(toyCar.start); // Function : start -> void 로 타입 지정해서 반환하지 않고 그냥 이렇게 보임
+
+// type 사용했을 때
+type Gender = 'F' | 'M';
+type Person = {
+    name : string;
+    age? : number;
+    like? : string[];
+    gender : Gender; // 'F' or 'M' 값만 가져야함
+}
+
+const IU : Person = {
+    name : "IU",
+    age : 30,
+    gender : 'F' // Gender type 에 선언된 값만 넣을 수 있음
+}
+
+console.log(IU);
+
 
 
 
