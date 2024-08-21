@@ -232,7 +232,7 @@ const toyCar:ToyCar = {
 }
 
 //console.log(toyCar);
-//console.log(toyCar.start); // Function : start -> void 로 타입 지정해서 반환하지 않고 그냥 이렇게 보임
+//console.log(toyCar.start); // Function : start
 
 // type 사용했을 때
 type Gender = 'F' | 'M';
