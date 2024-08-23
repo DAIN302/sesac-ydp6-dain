@@ -7,3 +7,9 @@ export interface TodoItemType {
     text : string; // todo 내용
     completed : boolean; // 완료 여부
 }
+
+export interface PostType {
+    id : number;
+    title : string;
+    body : string;
+}

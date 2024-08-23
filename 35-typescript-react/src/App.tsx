@@ -2,6 +2,7 @@ import React from 'react';
 import Student from './components/Student';
 import Card from './components/Card';
 import TodoList from './components/TodoList';
+import PostList from './components/PostList';
 
 function App() {
   // #1. 
@@ -14,7 +15,8 @@ function App() {
       {/* <Student name={"새싹"} grade={3} handleClick={handleClick} /> */}
       {/* <hr/> */}
       {/* <Card title="오늘 배울 것은?"><p>TypeScript with React</p></Card> */}
-      <TodoList />
+      {/* <TodoList /> */}
+      <PostList />
     </div>
   );
 }
