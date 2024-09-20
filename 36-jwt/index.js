@@ -40,6 +40,34 @@ app.post('/login', (req, res)=> {
     }
 })
 
+// token 검증
+app.post('/token', (req, res)=>{
+    // 서버는 클라이언트 요청의 authorization 헤더를 확인
+    if(req.headers.authorization){
+        console.log('인증 헤더', req.headers.authorization);
+
+        // ['Bearer', 'token_string']
+        const token = req.headers.authorization.split(' ') // 공백을 기준으로 나눠서 배열로 담기
+        console.log('token',token);
+        try {
+            const result = jwt.verify(token[1], SECRET)
+            console.log('result', result);
+
+            // 유효한 토큰일 때
+            if(result.id === userInfo.id) {
+                res.json({result : true, name : userInfo.name})
+            }
+        } catch (error) {
+            // 토큰 검증 실패 또는 유효하지 않은 토큰일 때
+            console.error(error);
+            res.json({result : false, message : '인증된 회원이 아닙니다.'})
+        }
+    } else {
+        // 토큰이 없으면 로그인창으로 보내기
+        res.redirect('/login')
+    }
+})
+
 app.listen(PORT, ()=>{
     console.log(`http://localhost:${PORT}`);
 })
