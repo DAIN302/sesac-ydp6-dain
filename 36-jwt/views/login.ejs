@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <form name="login-form">
+      <input type="text" name="id" id="id" placeholder="ID" />
+      <br />
+      <input type="password" name="pw" id="pw" placeholder="PW" />
+      <br />
+      <button type="button" onclick="login()">Log In</button>
+    </form>
+    <script>
+      async function login() {
+        console.log("login");
+        const form = document.forms["login-form"];
+        const res = await axios({
+          method: "POST",
+          url: "/login",
+          data: {
+            id: form.id.value,
+            pw: form.pw.value,
+          },
+        });
+        if (res.data.result) {
+          document.location.href = "/";
+        } else {
+            // 아이디나 비밀번호가 틀렸을 경우
+            alert(res.data.message)
+            document.location.reload(); // 새로고침
+        }
+      }
+    </script>
+  </body>
+</html>
