@@ -10,7 +10,7 @@ public class Motorcycle extends Vehicle{
 
     @Override
     public String toString() {
-        return "Bus{" +
+        return "Motorcycle{" +
                 "brand='" + brand +
                 ", model='" + model +
                 ", year=" + year +
