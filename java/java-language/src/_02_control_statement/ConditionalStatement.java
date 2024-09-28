@@ -6,31 +6,31 @@ public class ConditionalStatement {
     public static void main(String[] args) {
         // if else 문
         int number = 10;
-        if(number % 2 == 0){
-            System.out.println("짝수");
-        } else {
-            System.out.println("홀수");
-        }
+//        if(number % 2 == 0){
+//            System.out.println("짝수");
+//        } else {
+//            System.out.println("홀수");
+//        }
 
         // string type 조건문
-//        System.out.print("이름을 입력해주세요 >> ");
-//        Scanner sc = new Scanner(System.in);
-//        String name = sc.nextLine();
-//        System.out.println("name 값 확인 " + name);
+        System.out.print("이름을 입력해주세요 >> ");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        System.out.println("name 값 확인 " + name);
 
         // BAD case (== 비교연산자)
-//        if(name == "김굉필"){
-//            System.out.println("환영합니다.");
-//        }else {
-//            System.out.println("이름을 다시 확인해주세요"); // 여기가 출려ㄷ됨
-//        }
+        if(name == "김굉필"){
+            System.out.println("== 비교연산자 사용 : 환영합니다.");
+        }else {
+            System.out.println("== 비교연산자 사용 : 이름을 다시 확인해주세요"); // 여기가 출려ㄷ됨
+        }
 
         // 올바른 케이스 .equals() -> 문자열 비교는 equals 메서드로 해야함
-//        if(name.equals("김굉필")){
-//            System.out.println("환영합니다.");
-//        } else {
-//            System.out.println("이름을 다시 확인해주세요");
-//        }
+        if(name.equals("김굉필")){
+            System.out.println("equals() 사용 : 환영합니다.");
+        } else {
+            System.out.println("equals() 사용 : 이름을 다시 확인해주세요");
+        }
 
         // 이유?
         // == 연산자 : 두 객체의 "참조"를 비교 (동일한 메모리 위치를 가르키는지 검사)
@@ -45,15 +45,15 @@ public class ConditionalStatement {
         String str2 = "hello"; // 문자열 리터럴
 
         if(str1 == str2) { // 참조값 비교
-            System.out.println("같은 참조!"); // 출력
+            System.out.println("문자열 리터럴, == : 같은 참조!"); // 출력
         } else {
-            System.out.println("다른 참조!");
+            System.out.println("문자열 리터럴, == : 다른 참조!");
         }
 
         if(str1.equals(str2)) { // 내용 비교
-            System.out.println("같은 내용!"); // 출력
+            System.out.println("문자열 리터럴, equals() : 같은 내용!"); // 출력
         } else {
-            System.out.println("다른 내용!");
+            System.out.println("문자열 리터럴, equals() : 다른 내용!");
         }
 
         // "문자열 동적할당" 의 경우, 'new String...'을 사용해 문자열 객체를 생성하면 서로 다른 객체를 가리킴
@@ -62,30 +62,30 @@ public class ConditionalStatement {
 
         // str3와 str4가 다른 객체 이므로 '==' 연산자로 비교시 false
         if(str3 == str4) { // 참조값 비교
-            System.out.println("같은 참조!");
+            System.out.println("문자열 동적할당, == : 같은 참조!");
         } else {
-            System.out.println("다른 참조!"); // 출력
+            System.out.println("문자열 동적할당, == : 다른 참조!"); // 출력
         }
 
         if(str3.equals(str4)) { // 내용 비교
-            System.out.println("같은 내용!"); // 출력
+            System.out.println("문자열 동적할당, equals() : 같은 내용!"); // 출력
         } else {
-            System.out.println("다른 내용!");
+            System.out.println("문자열 동적할당, equals() : 다른 내용!");
         }
 
         // 자바에서 문자열 내용을 비교하고 싶을 때는 equals 메서드로 비교하는 것이 바람직
 
         // if ~ else if문
         // top down 방식으로 처음 조건식이 참으로 평가되면 해당 식 수행한 다음에 if 절을 빠져나감
-        if(number % 3 == 0){
-            System.out.println("3의 배수");
-        } else if (number % 5 == 0) {
-            System.out.println("5의 배수");
-        } else if (number % 2 == 0) {
-            System.out.println("2의 배수");
-        } else {
-            System.out.println("3,5,2의 배수도 아니다.");
-        }
+//        if(number % 3 == 0){
+//            System.out.println("3의 배수");
+//        } else if (number % 5 == 0) {
+//            System.out.println("5의 배수");
+//        } else if (number % 2 == 0) {
+//            System.out.println("2의 배수");
+//        } else {
+//            System.out.println("3,5,2의 배수도 아니다.");
+//        }
 
         // switch case 문
         // 각 case 문의 break 문은 선택사항으로 break 문 생략 시 바로 밑의 case 문으로 넘어감
@@ -108,7 +108,7 @@ public class ConditionalStatement {
             break;
         }
 
-        System.out.println(dayOfWeek);
+//        System.out.println(dayOfWeek);
 
     }
 }
