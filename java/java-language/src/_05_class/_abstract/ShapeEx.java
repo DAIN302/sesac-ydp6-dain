@@ -23,9 +23,6 @@ public class ShapeEx {
 //        도형을 그려보자
 //        사각형 그리기
 //        도형의 색상은 yellow
-
-
-
     }
     // static method
     public static void go(Shape shape){
