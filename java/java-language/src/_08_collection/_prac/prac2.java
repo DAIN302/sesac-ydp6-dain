@@ -26,13 +26,14 @@ public class prac2 {
             }
         }
 
+        System.out.println("== 입력 받은 이름과 나이 == ");
         Iterator<Entry<String, Integer>> entryIterator = person.entrySet().iterator();
-//        while (entryIterator.hasNext()){
-//            Map.Entry<Integer, String> entry = entryIterator.next();
-//            Integer k = entry.getKey();
-//            String v = entry.getValue();
-//            System.out.printf(" %s 학생은 %d 번 입니다. %n%n", v, k);
-//        }
+        while (entryIterator.hasNext()){
+            Entry<String, Integer> entry = entryIterator.next();
+            String k = entry.getKey();
+            Integer v = entry.getValue();
+            System.out.printf("이름: %s, 나이: %d %n", k, v);
+        }
 
     }
 }
