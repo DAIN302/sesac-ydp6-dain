@@ -1,7 +1,9 @@
 package _08_collection._prac;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class prac2 {
@@ -24,8 +26,13 @@ public class prac2 {
             }
         }
 
-        System.out.println(person);
-
+        Iterator<Entry<String, Integer>> entryIterator = person.entrySet().iterator();
+//        while (entryIterator.hasNext()){
+//            Map.Entry<Integer, String> entry = entryIterator.next();
+//            Integer k = entry.getKey();
+//            String v = entry.getValue();
+//            System.out.printf(" %s 학생은 %d 번 입니다. %n%n", v, k);
+//        }
 
     }
 }
