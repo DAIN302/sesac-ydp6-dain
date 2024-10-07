@@ -289,4 +289,146 @@ public class RestController {
 
         return userVO.getName() + " " + userVO.getAge();
     }
+
+    // == DTO axios ==
+    // #14-1 get(일반) axios - O
+    @GetMapping("/axios/res1")
+    @ResponseBody
+    public String axiosRes1(@RequestParam String name, @RequestParam String age){
+        System.out.println("axios name = " + name);
+        System.out.println("axios age = " + age);
+
+        return "이름 : " + name + ", 나이 : " + age;
+    }
+
+    // #14-2 get(DTO) axios  - O
+    @GetMapping("/axios/res2")
+    @ResponseBody
+    public String axiosRes2(UserDTO userDTO){
+        // UserDTO 객체를 파라미터로 받아 자동으로 데이터 바인딩
+        // - DTO 를 사용해서 데이터를 캡슐화
+        // - 14-1 대비 코드가 깔끔해지고 데이터 구조 설계 확장 가능
+        System.out.println("axios name = " + userDTO.getName());
+        System.out.println("axios age = " + userDTO.getAge());
+
+        return "이름 : " + userDTO.getName() + ", 나이 : " + userDTO.getAge();
+    }
+
+    // #15-1 post(일반) - axios - X(400 error)
+    @PostMapping("/axios/res3")
+    @ResponseBody
+    public String axiosRes3(@RequestParam String name, @RequestParam String age){
+        // @RequestParam
+        // 참고. 에러 발생 이유
+        // - 클라이언트에서는 데이터를 객체로 전송, 서버에서는 @RequestParam 으로 받으려고 함
+        // - axios 는 기본적으로 데이터를 json 형식으로 전송(Content-Type : application/json)
+        // - 하지만, 서버 측 코드는 @RequestParam 을 사용해서 데이터를 받음(Content-Type : x-www-form-urlencoded)
+        // - 서로 상이해서 에러가 난거임
+        System.out.println("axios name = " + name);
+        System.out.println("axios age = " + age);
+
+        return "이름 : " + name + ", 나이 : " + age;
+    }
+
+    // #15-2 post(DTO) - axios without @RequestBody - X(null, 0)
+    @PostMapping("/axios/res4")
+    @ResponseBody
+    public String axiosRes4(UserDTO userDTO){
+        // - json 데이터는 요청 본문에 있지만, @RequestBody 없는 UserDTO 는 주로 폼 데이터나 쿼리 파라미터를 바인딩 하는데 사용
+        // - 즉, @RequestBody 어노테이션이 없으면 Spring 은 json 요청 본문을 자동으로 UserDTO 에 바인딩하지 않음
+        System.out.println("axios name = " + userDTO.getName());
+        System.out.println("axios age = " + userDTO.getAge());
+
+        return "이름 : " + userDTO.getName() + ", 나이 : " + userDTO.getAge();
+    }
+
+    // #15-3 post(DTO) - axios with @RequestBody - O
+    @PostMapping("/axios/res5")
+    @ResponseBody
+    public String axiosRes5(@RequestBody UserDTO userDTO){
+        // @RequestBody
+        // - 요청의 본문 json 데이터를 UserDTO 객체로 직접 매핑
+        // - 즉 Restful API 설계에 적합하며, 클라이언트-서버 간 데이터 교환을 명확하게 할 수 있음
+        // => #15-2 코드의 해결책
+        System.out.println("axios name = " + userDTO.getName());
+        System.out.println("axios age = " + userDTO.getAge());
+
+        return "이름 : " + userDTO.getName() + ", 나이 : " + userDTO.getAge();
+    }
+
+    // == VO axios ==
+    // #16-1 get(일반) axios - O
+    @GetMapping("/axios/vo/res1")
+    @ResponseBody
+    public String axiosVoRes1(@RequestParam String name, @RequestParam String age){
+        // - http 요청 파라미터를 메서드 매개변수에 바인딩
+        System.out.println("axios name = " + name);
+        System.out.println("axios age = " + age);
+
+        return "이름 : " + name + ", 나이 : " + age;
+    }
+
+    // #16-2 get(VO) axios with - X(null, 0)
+    @GetMapping("/axios/vo/res2")
+    @ResponseBody
+    public String axiosVoRes2(UserVO userVO){
+        // @ModelAttribute 어노테이션 생략
+        // - 해당 어노테이션은 setter 를 통해 객체의 값 주입
+        // -> VO 객체에는 setter 가 없어서 데이터 바인딩이 제대로 이뤄지지 않는다.
+        // -> 따라서 모든 필드가 기본값(null, 0) 으로 초기화되서 출력 됨
+        System.out.println("axios name = " + userVO.getName());
+        System.out.println("axios age = " + userVO.getAge());
+
+        return "이름 : " + userVO.getName() + ", 나이 : " + userVO.getAge();
+    }
+
+    // #17-1 post(일반) axios - X (error 400)
+    @PostMapping("/axios/vo/res3")
+    @ResponseBody
+    public String axiosRVoes3(@RequestParam String name, @RequestParam String age){
+        // @RequestParam
+        // 참고. 에러 발생 이유
+        // - 클라이언트에서는 데이터를 객체로 전송, 서버에서는 @RequestParam 으로 받으려고 함
+        // - axios 는 기본적으로 데이터를 json 형식으로 전송(Content-Type : application/json)
+        // - 하지만, 서버 측 코드는 @RequestParam 을 사용해서 데이터를 받음(Content-Type : x-www-form-urlencoded)
+        // - 서로 상이해서 에러가 난거임
+        System.out.println("axios name = " + name);
+        System.out.println("axios age = " + age);
+
+        return "이름 : " + name + ", 나이 : " + age;
+    }
+
+    // #17-2 post(VO) axios without @RequestBody - X(null, 0)
+    @PostMapping("/axios/vo/res4")
+    @ResponseBody
+    public String axiosRVoes4(UserVO userVO){
+        // @ModelAttribute 어노테이션 생략
+        // - 해당 어노테이션은 setter 를 통해 객체의 값 주입
+        // -> VO 객체에는 setter 가 없어서 데이터 바인딩이 제대로 이뤄지지 않는다.
+        // -> 따라서 모든 필드가 기본값(null, 0) 으로 초기화되서 출력 됨
+        System.out.println("axios name = " + userVO.getName());
+        System.out.println("axios age = " + userVO.getAge());
+
+        return "이름 : " + userVO.getName() + ", 나이 : " + userVO.getAge();
+    }
+
+    // #17-3 post(VO) axios with @RequestBody - O
+    @PostMapping("/axios/vo/res5")
+    @ResponseBody
+    public String axiosRVoes5(@RequestBody UserVO userVO){
+        // @RequestBody
+        // - 요청의 본문 json 데이터를 UserVO 객체로 올바르게 변환하도록 함
+        // - 즉 Restful API 설계에 적합하며, 클라이언트-서버 간 데이터 교환을 명확하게 할 수 있음
+
+        // setter 를 이용해서 값을 주입하는 것이 아니라
+        // 자바의 리플렉션 기능을 써서 값을 넣어주는 것
+
+        // 비교) @ModelAttribute vs @RequestBody
+        // @ModelAttribute : setter 를 이용해서 값 넣음
+        // @RequestBody : 각 필드에 직접 접근해서 값 주입 (setter 사용 X)
+        System.out.println("axios name = " + userVO.getName());
+        System.out.println("axios age = " + userVO.getAge());
+
+        return "이름 : " + userVO.getName() + ", 나이 : " + userVO.getAge();
+    }
 }
