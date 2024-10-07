@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>폼 전송 실습</title>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- js -->
+    <script src="/js/reqPrac.js" defer></script>
     <link rel="stylesheet" href="/css/req.css" />
 </head>
 <body>
-<form action="/info" method="POST" class="form-card">
+<!--<form action="/info" method="POST" class="form-card">-->
+<form id="form_prac" class="form-card">
   <label for="name">이름</label>
   <input type="text" name="name" id="name" placeholder="이름" /><br />
   <span>성별</span>
@@ -77,7 +82,8 @@
   <input type="checkbox" name="interest" id="food" value="음식">
   <label for="food">음식</label>
   <br>
-  <button type="submit">회원가입</button>
+<!--  <button type="submit">회원가입</button>-->
+  <button type="button" onclick="pracRes()">전송</button>
 </form>
 </body>
 </html>

@@ -14,8 +14,8 @@ public class RestController {
     // GET localhost:PORT/ 요청 시 _02_restapi/req.html 이 브라우저에 렌더링
     // node.js 에서 res.render() 와 유사한 역할
     @GetMapping("/")
-    public String getReq(){ return "_02_restapi/req";}
-//    public String getPracReq(){ return "_02_restapi/pracReq";}
+//    public String getReq(){ return "_02_restapi/req";}
+    public String getPracReq(){ return "_02_restapi/pracReq";}
 
 
     // === GET 요청 ===
@@ -430,5 +430,11 @@ public class RestController {
         System.out.println("axios age = " + userVO.getAge());
 
         return "이름 : " + userVO.getName() + ", 나이 : " + userVO.getAge();
+    }
+
+    @PostMapping("/pracinfo")
+    @ResponseBody
+    public String axiosPracInfo(@RequestBody PracVO pracVO){
+        return pracVO.getName();
     }
 }
