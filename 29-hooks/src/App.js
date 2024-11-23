@@ -17,8 +17,8 @@ function App() {
       <UseCallbackEx2 postId={14} /> */}
       {/* <UseReducerEx /> */}
       {/* <Faq /> */}
-      {/* <Form /> */}
-      <RHFPrac />
+      <Form />
+      {/* <RHFPrac /> */}
     </div>
   );
 }
